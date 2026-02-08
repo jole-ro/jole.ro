@@ -1,0 +1,162 @@
+---
+import Layout from "../../layouts/Layout.astro";
+
+const lang = "ro";
+---
+
+<Layout title="Politica de Confidențialitate - JOLERO SRL" lang={lang}>
+    <section class="py-24 bg-gray-50">
+        <div class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div
+                class="bg-white p-8 md:p-12 rounded-3xl shadow-sm border border-gray-100"
+            >
+                <h1 class="text-4xl font-bold text-gray-900 mb-8 text-center">
+                    Politica de Confidențialitate
+                </h1>
+
+                <div
+                    class="prose prose-indigo max-w-none text-gray-600 space-y-6"
+                >
+                    <p>
+                        Ultima actualizare: {
+                            new Date().toLocaleDateString("ro-RO", {
+                                year: "numeric",
+                                month: "long",
+                                day: "numeric",
+                            })
+                        }
+                    </p>
+
+                    <section>
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">
+                            1. Introducere
+                        </h2>
+                        <p>
+                            Bine ați venit la JOLERO SRL. Vă respectăm
+                            confidențialitatea și ne angajăm să vă protejăm
+                            datele personale. Această politică de
+                            confidențialitate vă va informa despre modul în care
+                            avem grijă de datele dvs. personale atunci când
+                            vizitați site-ul nostru web și vă va informa despre
+                            drepturile dvs. la confidențialitate și despre modul
+                            în care legea vă protejează.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">
+                            2. Datele pe care le colectăm
+                        </h2>
+                        <p>
+                            Putem colecta, utiliza, stoca și transfera diferite
+                            tipuri de date cu caracter personal despre dvs. pe
+                            care le furnizați prin formularul nostru de contact:
+                        </p>
+                        <ul class="list-disc pl-6 space-y-2">
+                            <li>
+                                <strong>Date de Identitate:</strong> Nume, Numele
+                                Afacerii (Opțional).
+                            </li>
+                            <li>
+                                <strong>Date de Contact:</strong> Adresa de e-mail,
+                                Numărul de telefon.
+                            </li>
+                            <li>
+                                <strong>Date de Comunicare:</strong> Conținutul mesajului
+                                dvs.
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">
+                            3. Cum folosim datele dvs.
+                        </h2>
+                        <p>
+                            Vom folosi datele dvs. cu caracter personal numai în
+                            următoarele scopuri:
+                        </p>
+                        <ul class="list-disc pl-6 space-y-2">
+                            <li>
+                                Pentru a răspunde solicitărilor dvs. și pentru a
+                                furniza informațiile solicitate.
+                            </li>
+                            <li>
+                                Pentru a îmbunătăți site-ul nostru web prin
+                                analize (GA4, Google Tag Manager).
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">
+                            4. Păstrarea Datelor
+                        </h2>
+                        <p>
+                            Vom păstra datele dvs. cu caracter personal doar
+                            atâta timp cât este rezonabil necesar pentru a
+                            îndeplini scopurile pentru care le-am colectat. Mai
+                            exact, păstrăm datele solicitărilor clienților
+                            pentru o perioadă de <strong>8 ani</strong> pentru a menține
+                            un istoric al comunicărilor și pentru potențiale relații
+                            de afaceri.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">
+                            5. Divulgări către terți
+                        </h2>
+                        <p>
+                            Folosim produse legate de Google, cum ar fi Google
+                            Analytics 4 (GA4) și Google Tag Manager, pentru a
+                            analiza traficul site-ului web și pentru a
+                            îmbunătăți experiența utilizatorului. Acești terți
+                            pot colecta date în conformitate cu propriile
+                            politici de confidențialitate.
+                        </p>
+                    </section>
+
+                    <section>
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">
+                            6. Drepturile Dumneavoastră
+                        </h2>
+                        <p>
+                            Conform GDPR, aveți următoarele drepturi cu privire
+                            la datele dvs. personale:
+                        </p>
+                        <ul class="list-disc pl-6 space-y-2">
+                            <li>
+                                Dreptul de a accesa, corecta sau șterge datele
+                                dvs. personale.
+                            </li>
+                            <li>
+                                Dreptul de a vă opune sau de a restricționa
+                                prelucrarea.
+                            </li>
+                            <li>Dreptul la portabilitatea datelor.</li>
+                            <li>
+                                Dreptul de a retrage consimțământul în orice
+                                moment.
+                            </li>
+                        </ul>
+                    </section>
+
+                    <section>
+                        <h2 class="text-2xl font-bold text-gray-900 mb-4">
+                            7. Contactați-ne
+                        </h2>
+                        <p>
+                            Dacă aveți întrebări despre această politică de
+                            confidențialitate sau despre practicile noastre de
+                            confidențialitate, vă rugăm să ne contactați la:
+                        </p>
+                        <p class="font-semibold text-primary">
+                            Email: gdpr@jole.ro
+                        </p>
+                    </section>
+                </div>
+            </div>
+        </div>
+    </section>
+</Layout>

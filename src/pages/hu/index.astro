@@ -1,0 +1,18 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Hero from "../../components/Hero.astro";
+import Services from "../../components/Services.astro";
+import Benefits from "../../components/Benefits.astro";
+import Testimonials from "../../components/Testimonials.astro";
+import Contact from "../../components/Contact.astro";
+
+const lang = "hu";
+---
+
+<Layout title="Jolero - Tegye ragyogóvá vállalkozását" lang={lang}>
+	<Hero lang={lang} />
+	<Services lang={lang} />
+	<Benefits lang={lang} />
+	<Testimonials lang={lang} />
+	<!-- Blog is English only, so we might omit it or show English posts? User said "With blogs only in english". I will omit it from the homepage of other languages to avoid confusion, or can add it if requested. For now, omitting based on "blogs only in english" implying it's an English feature. -->
+</Layout>

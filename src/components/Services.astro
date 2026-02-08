@@ -1,0 +1,121 @@
+---
+const { lang = "en" } = Astro.props;
+
+const content = {
+    en: {
+        title: "Our Services",
+        subtitle:
+            "Comprehensive solutions to boost your local business presence",
+    },
+    hu: {
+        title: "Szolgáltatásaink",
+        subtitle: "Átfogó megoldások a helyi üzleti jelenlét növelésére",
+    },
+    ro: {
+        title: "Serviciile Noastre",
+        subtitle:
+            "Soluții complete pentru a crește prezența afacerii tale locale",
+    },
+};
+
+const services = {
+    en: [
+        {
+            title: "Business Listing Management",
+            desc: "Manage and optimize your business listings across all major platforms from one central dashboard.",
+            icon: "ri-store-3-line",
+            img: "/images/business_listing_management.png",
+        },
+        {
+            title: "Social Media Optimization",
+            desc: "Enhance your social media presence with strategic content and engagement strategies.",
+            icon: "ri-global-line",
+            img: "/images/social_media_optimization.png",
+        },
+        {
+            title: "Local SEO Enhancement",
+            desc: "Improve your local search rankings and visibility to attract more nearby customers.",
+            icon: "ri-search-line",
+            img: "/images/local_seo_enhancement.png",
+        },
+    ],
+    // For now using English content for other languages as placeholder, user can update later or I can translate if needed.
+    // The prompt said "3 languages", I should probably translate these titles at least.
+    hu: [
+        {
+            title: "Vállalkozás Adatlap Kezelés",
+            desc: "Kezelje és optimalizálja vállalkozása adatait minden nagyobb platformon egyetlen központi felületről.",
+            icon: "ri-store-3-line",
+            img: "/images/business_listing_management.png",
+        },
+        {
+            title: "Közösségi Média Optimalizálás",
+            desc: "Növelje jelenlétét a közösségi médiában stratégiai tartalmakkal.",
+            icon: "ri-global-line",
+            img: "/images/social_media_optimization.png",
+        },
+        {
+            title: "Helyi SEO Fejlesztés",
+            desc: "Javítsa helyezését a helyi keresésekben, hogy több közeli ügyfelet vonzzon.",
+            icon: "ri-search-line",
+            img: "/images/local_seo_enhancement.png",
+        },
+    ],
+    ro: [
+        {
+            title: "Gestionarea Listărilor",
+            desc: "Gestionează și optimizează listările afacerii tale pe toate platformele majore.",
+            icon: "ri-store-3-line",
+            img: "/images/business_listing_management.png",
+        },
+        {
+            title: "Optimizare Social Media",
+            desc: "Îmbunătățește prezența pe rețelele sociale cu strategii de conținut eficiente.",
+            icon: "ri-global-line",
+            img: "/images/social_media_optimization.png",
+        },
+        {
+            title: "Îmbunătățire SEO Local",
+            desc: "Îmbunătățește clasamentul în căutările locale pentru a atrage mai mulți clienți.",
+            icon: "ri-search-line",
+            img: "/images/local_seo_enhancement.png",
+        },
+    ],
+};
+
+const t = content[lang as keyof typeof content] || content.en;
+const list = services[lang as keyof typeof services] || services.en;
+---
+
+<section id="services" class="py-24 bg-gradient-to-b from-white to-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">{t.title}</h2>
+            <p class="text-lg text-gray-600">{t.subtitle}</p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+            {
+                list.map((service) => (
+                    <div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+                        <div class="mb-8">
+                            <img
+                                src={service.img}
+                                alt={service.title}
+                                class="w-full h-48 object-cover rounded-lg mb-6"
+                            />
+                            <div class="w-12 h-12 flex items-center justify-center bg-purple-100 rounded-lg mb-6">
+                                <i
+                                    class={`${service.icon} icon-gradient text-2xl`}
+                                />
+                            </div>
+                            <h3 class="text-xl font-semibold mb-4">
+                                {service.title}
+                            </h3>
+                            <p class="text-gray-600">{service.desc}</p>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</section>

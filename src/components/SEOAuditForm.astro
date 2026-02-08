@@ -1,0 +1,363 @@
+---
+const { lang = "en" } = Astro.props;
+
+const content = {
+    en: {
+        title: "Request Your Free SEO Audit",
+        subtitle:
+            "Get a detailed analysis of your website's search performance and clear steps to improve it.",
+        name: "Business Name",
+        person: "Name",
+        email: "Email",
+        phone: "Phone (Optional)",
+        website: "Website URL",
+        message: "Anything specific you'd like us to look at?",
+        send: "Request Free Audit",
+        sending: "Sending...",
+        success:
+            "Thank you! We've received your request and will get back to you with your audit soon.",
+        error: "Failed to send request. Please try again.",
+        privacyPath: "/privacy",
+        privacy: "Privacy Policy",
+        consent:
+            "I agree to the processing of my personal data according to the",
+        benefits: [
+            {
+                icon: "📊",
+                title: "Comprehensive Analysis",
+                desc: "We analyze your keywords, backlinks, and technical SEO factors to see where you stand.",
+            },
+            {
+                icon: "🚀",
+                title: "Growth Opportunities",
+                desc: "Identify easy wins and long-term strategies to outrank your competitors.",
+            },
+            {
+                icon: "💡",
+                title: "Actionable Insights",
+                desc: "No fluff - just clear, prioritized recommendations you can implement immediately.",
+            },
+            {
+                icon: "🤝",
+                title: "Expert Review",
+                desc: "Your audit is performed by SEO professionals, not just an automated tool.",
+            },
+        ],
+    },
+    hu: {
+        title: "Kérje ingyenes SEO auditját",
+        subtitle:
+            "Részletes elemzést kap weboldala keresési teljesítményéről és egyértelmű lépéseket a javításhoz.",
+        name: "Cég név",
+        person: "Név",
+        email: "Email",
+        phone: "Telefonszám (Opcionális)",
+        website: "Weboldal címe",
+        message: "Van valami konkrétum, amit megvizsgáljunk?",
+        send: "Ingyenes Audit Kérése",
+        sending: "Küldés...",
+        success:
+            "Köszönjük! Megkaptuk kérését, és hamarosan jelentkezünk az audittal.",
+        error: "Sikertelen küldés. Kérjük, próbálja újra.",
+        privacyPath: "/hu/privacy",
+        privacy: "adatkezelési tájékoztatóban",
+        consent: "Hozzájárulok a személyes adataim kezeléséhez az",
+        benefits: [
+            {
+                icon: "📊",
+                title: "Átfogó Elemzés",
+                desc: "Elemezzük kulcsszavait, visszamutató linkjeit és technikai SEO tényezőit.",
+            },
+            {
+                icon: "🚀",
+                title: "Növekedési Lehetőségek",
+                desc: "Azonosítjuk a gyors sikereket és a hosszú távú stratégiákat a versenytársak megelőzéséhez.",
+            },
+            {
+                icon: "💡",
+                title: "Gyakorlati Tanácsok",
+                desc: "Semmi mellébeszélés - csak világos, rangsorolt ajánlások, amelyeket azonnal megvalósíthat.",
+            },
+            {
+                icon: "🤝",
+                title: "Szakértői Vélemény",
+                desc: "Az auditot SEO szakemberek végzik, nem csak egy automatizált eszköz.",
+            },
+        ],
+    },
+    ro: {
+        title: "Solicită Auditul SEO Gratuit",
+        subtitle:
+            "Primești o analiză detaliată a performanței site-ului tău în căutări și pași clari pentru îmbunătățire.",
+        name: "Numele Afacerii",
+        person: "Nume",
+        email: "Email",
+        phone: "Telefon (Opțional)",
+        website: "URL Website",
+        message: "Doriți să ne uităm la ceva anume?",
+        send: "Solicită Audit Gratuit",
+        sending: "Se trimite...",
+        success:
+            "Vă mulțumim! Am primit solicitarea dvs. și vă vom contacta curând cu auditul.",
+        error: "Trimiterea solicitării a eșuat. Vă rugăm să încercați din nou.",
+        privacyPath: "/ro/privacy",
+        privacy: "politica de confidențialitate",
+        consent: "Sunt de acord cu prelucrarea datelor mele personale conform",
+        benefits: [
+            {
+                icon: "📊",
+                title: "Analiză Completă",
+                desc: "Analizăm cuvintele cheie, backlink-urile și factorii tehnici SEO pentru a vedea unde vă aflați.",
+            },
+            {
+                icon: "🚀",
+                title: "Oportunități de Creștere",
+                desc: "Identificăm reușite rapide și strategii pe termen lung pentru a depăși concurența.",
+            },
+            {
+                icon: "💡",
+                title: "Sfaturi Practice",
+                desc: "Fără informații inutile - doar recomandări clare și prioritizate pe care le puteți implementa imediat.",
+            },
+            {
+                icon: "🤝",
+                title: "Revizuire de către Experți",
+                desc: "Auditul dvs. este realizat de profesioniști SEO, nu doar de un instrument automatizat.",
+            },
+        ],
+    },
+};
+
+const t = content[lang as keyof typeof content] || content.en;
+---
+
+<section id="seo-audit" class="py-24 bg-gray-50">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+            <h2 class="text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+                {t.title}
+            </h2>
+            <p class="text-lg text-gray-600 max-w-2xl mx-auto">{t.subtitle}</p>
+        </div>
+
+        <div class="grid lg:grid-cols-5 gap-12 items-start">
+            <!-- SEO Audit Form -->
+            <div class="lg:col-span-3">
+                <form
+                    class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100"
+                >
+                    <div class="grid md:grid-cols-2 gap-6 mb-6">
+                        <div>
+                            <label
+                                class="block text-sm font-medium text-gray-700 mb-2"
+                                >{t.person}</label
+                            >
+                            <input
+                                type="text"
+                                name="name"
+                                class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-shadow"
+                                required
+                            />
+                        </div>
+                        <div>
+                            <label
+                                class="block text-sm font-medium text-gray-700 mb-2"
+                                >{t.name}</label
+                            >
+                            <input
+                                type="text"
+                                name="businessName"
+                                class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-shadow"
+                                required
+                            />
+                        </div>
+                        <div class="md:col-span-2">
+                            <label
+                                class="block text-sm font-medium text-gray-700 mb-2"
+                                >{t.website}</label
+                            >
+                            <input
+                                type="url"
+                                name="website"
+                                placeholder="https://example.com"
+                                class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-shadow"
+                                required
+                            />
+                        </div>
+                        <div>
+                            <label
+                                class="block text-sm font-medium text-gray-700 mb-2"
+                                >{t.email}</label
+                            >
+                            <input
+                                type="email"
+                                id="audit-email"
+                                name="email"
+                                class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-shadow"
+                                required
+                            />
+                        </div>
+                        <div>
+                            <label
+                                class="block text-sm font-medium text-gray-700 mb-2"
+                                >{t.phone}</label
+                            >
+                            <input
+                                type="tel"
+                                id="audit-phone"
+                                name="phone"
+                                class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-shadow"
+                            />
+                        </div>
+                    </div>
+                    <div class="mb-6">
+                        <label
+                            class="block text-sm font-medium text-gray-700 mb-2"
+                            >{t.message}</label
+                        >
+                        <textarea
+                            name="message"
+                            class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-shadow"
+                            rows="4"></textarea>
+                    </div>
+
+                    <div class="mb-8 flex items-start gap-3">
+                        <input
+                            type="checkbox"
+                            id="gdpr-consent-audit"
+                            name="consent"
+                            value="true"
+                            required
+                            class="mt-1 w-4 h-4 text-primary border-gray-300 rounded focus:ring-primary cursor-pointer"
+                        />
+                        <label
+                            for="gdpr-consent-audit"
+                            class="text-sm text-gray-600 leading-tight"
+                        >
+                            {t.consent}
+                            <a
+                                href={t.privacyPath}
+                                class="text-primary hover:underline font-medium"
+                                >{t.privacy}</a
+                            >.
+                        </label>
+                    </div>
+
+                    <button
+                        type="submit"
+                        id="submit-btn-audit"
+                        class="w-full bg-primary text-white py-4 rounded-xl hover:bg-primary-hover cursor-pointer font-semibold shadow-lg shadow-primary/20 transition-all hover:-translate-y-1 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+                    >
+                        <span id="submit-text-audit">{t.send}</span>
+                    </button>
+                </form>
+            </div>
+
+            <!-- Sidebar Benefits -->
+            <div class="lg:col-span-2 space-y-8">
+                {
+                    t.benefits.map((benefit) => (
+                        <div class="flex gap-4">
+                            <div class="flex-shrink-0 w-12 h-12 bg-white rounded-xl shadow-sm border border-gray-100 flex items-center justify-center text-2xl">
+                                {benefit.icon}
+                            </div>
+                            <div>
+                                <h3 class="text-lg font-bold text-gray-900 mb-1">
+                                    {benefit.title}
+                                </h3>
+                                <p class="text-gray-600 leading-relaxed text-sm">
+                                    {benefit.desc}
+                                </p>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </div>
+</section>
+
+<script>
+    const form = document.querySelector("#seo-audit form") as HTMLFormElement;
+    const submitBtn = document.getElementById(
+        "submit-btn-audit",
+    ) as HTMLButtonElement;
+    const submitText = document.getElementById("submit-text-audit");
+
+    if (form && submitBtn && submitText) {
+        form.addEventListener("submit", async function (e) {
+            e.preventDefault();
+
+            // Disable submit button and show loading state
+            submitBtn.disabled = true;
+            const originalText = submitText.textContent;
+            submitText.textContent =
+                document.documentElement.lang === "hu"
+                    ? "Küldés..."
+                    : document.documentElement.lang === "ro"
+                      ? "Se trimite..."
+                      : "Sending...";
+
+            try {
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData);
+                // Add context that this is an SEO audit request
+                data.source = "SEO Audit Landing Page";
+
+                const response = await fetch("/contact.php", {
+                    method: "POST",
+                    headers: {
+                        "Content-Type": "application/json",
+                    },
+                    body: JSON.stringify(data),
+                });
+
+                const result = await response.json();
+
+                if (response.ok && result.success) {
+                    // Show success message
+                    const successMessage = document.createElement("div");
+                    successMessage.className =
+                        "fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded shadow-lg z-50";
+                    successMessage.textContent =
+                        document.documentElement.lang === "hu"
+                            ? "Köszönjük! Megkaptuk kérését, és hamarosan jelentkezünk az audittal."
+                            : document.documentElement.lang === "ro"
+                              ? "Vă mulțumim! Am primit solicitarea dvs. și vă vom contacta curând cu auditul."
+                              : "Thank you! We've received your request and will get back to you with your audit soon.";
+                    document.body.appendChild(successMessage);
+
+                    setTimeout(() => {
+                        successMessage.remove();
+                    }, 5000);
+
+                    form.reset();
+                } else {
+                    throw new Error(result.message || "Failed to send request");
+                }
+            } catch (error) {
+                // Show error message
+                const errorMessage = document.createElement("div");
+                errorMessage.className =
+                    "fixed top-4 right-4 bg-red-500 text-white px-6 py-3 rounded shadow-lg z-50";
+                errorMessage.textContent =
+                    document.documentElement.lang === "hu"
+                        ? "Sikertelen küldés. Kérjük, próbálja újra."
+                        : document.documentElement.lang === "ro"
+                          ? "Trimiterea solicitării a eșuat. Vă rugăm să încercați din nou."
+                          : "Failed to send request. Please try again.";
+                document.body.appendChild(errorMessage);
+
+                setTimeout(() => {
+                    errorMessage.remove();
+                }, 5000);
+
+                console.error("Form submission error:", error);
+            } finally {
+                // Re-enable submit button
+                submitBtn.disabled = false;
+                submitText.textContent = originalText;
+            }
+        });
+    }
+</script>

@@ -1,0 +1,110 @@
+---
+const { lang = "en" } = Astro.props;
+
+const content = {
+    en: {
+        title: "What Our Clients Say",
+        subtitle: "Real stories from businesses like yours",
+    },
+    hu: {
+        title: "Ügyfeleink mondták",
+        subtitle: "Valós történetek vállalkozásoktól",
+    },
+    ro: {
+        title: "Ce spun clienții noștri",
+        subtitle: "Povești reale de la afaceri ca a ta",
+    },
+};
+
+const testimonials = {
+    en: [
+        {
+            text: "Jolero has transformed our online presence. Our customer engagement has increased significantly since we started working with them.",
+            author: "Emily Richardson",
+            company: "Bloom Cafe",
+        },
+        {
+            text: "The team at Jolero really understands local business needs. They've helped us reach new customers we never thought possible.",
+            author: "Michael Anderson",
+            company: "Anderson Hardware",
+        },
+        {
+            text: "Professional, responsive, and results-driven. Our online reviews and ratings have improved dramatically.",
+            author: "Sarah Thompson",
+            company: "Wellness Center",
+        },
+    ],
+    hu: [
+        {
+            text: "A Jolero megváltoztatta az online jelenlétünket. Az ügyfélkapcsolataink jelentősen javultak, mióta velük dolgozunk.",
+            author: "Emily Richardson",
+            company: "Bloom Cafe",
+        },
+        {
+            text: "A Jolero csapata valóban érti a helyi vállalkozások igényeit. Olyan ügyfeleket hódítottunk meg, akikről álmodni sem mertünk.",
+            author: "Michael Anderson",
+            company: "Anderson Hardware",
+        },
+        {
+            text: "Professzionális, segítőkész és eredményorientált. Az online értékeléseink drámaian javultak.",
+            author: "Sarah Thompson",
+            company: "Wellness Center",
+        },
+    ],
+    ro: [
+        {
+            text: "Jolero a transformat prezența noastră online. Angajamentul clienților a crescut semnificativ de când am început colaborarea.",
+            author: "Emily Richardson",
+            company: "Bloom Cafe",
+        },
+        {
+            text: "Echipa Jolero înțelege cu adevărat nevoile afacerilor locale. Ne-au ajutat să ajungem la clienți noi.",
+            author: "Michael Anderson",
+            company: "Anderson Hardware",
+        },
+        {
+            text: "Profesioniști, receptivi și orientați spre rezultate. Recenziile noastre au crescut dramatic.",
+            author: "Sarah Thompson",
+            company: "Wellness Center",
+        },
+    ],
+};
+
+const t = content[lang as keyof typeof content] || content.en;
+const list = testimonials[lang as keyof typeof testimonials] || testimonials.en;
+---
+
+<section id="testimonials" class="py-24 bg-gradient-to-b from-gray-50 to-white">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+            <h2 class="text-3xl font-bold text-gray-900 mb-4">{t.title}</h2>
+            <p class="text-lg text-gray-600">{t.subtitle}</p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+            {
+                list.map((item, index) => (
+                    <div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+                        <div class="flex items-center mb-4">
+                            <div class="icon-gradient">
+                                <i class="ri-star-fill text-yellow-400" />
+                                <i class="ri-star-fill text-yellow-400" />
+                                <i class="ri-star-fill text-yellow-400" />
+                                <i class="ri-star-fill text-yellow-400" />
+                                <i class="ri-star-fill text-yellow-400" />
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-6">"{item.text}"</p>
+                        <div class="flex items-center">
+                            <div class="flex-1">
+                                <h4 class="font-semibold">{item.author}</h4>
+                                <p class="text-gray-500 text-sm">
+                                    {item.company}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                ))
+            }
+        </div>
+    </div>
+</section>

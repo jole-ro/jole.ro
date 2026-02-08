@@ -1,0 +1,340 @@
+---
+const { lang = "en" } = Astro.props;
+
+const content = {
+  en: {
+    title: "Enhance Your Local Digital Presence",
+    name: "Business Name (Optional)",
+    person: "Name",
+    email: "Email (Optional)",
+    phone: "Phone (Optional)",
+    message: "How can we help?",
+    send: "Send Message",
+    sending: "Sending...",
+    success: "Thank you for your message. We'll get back to you soon!",
+    error: "Failed to send message. Please try again.",
+    privacyPath: "/privacy",
+    privacy: "Privacy Policy",
+    consent: "I agree to the processing of my personal data according to the",
+    benefits: [
+      {
+        icon: "🎯",
+        title: "Expert Strategy",
+        desc: "Receive a tailored growth plan designed to make your business easy for local customers to find.",
+      },
+      {
+        icon: "⚡",
+        title: "Fast Response",
+        desc: "We respect your time and guarantee a professional reply to your message within 24 hours.",
+      },
+      {
+        icon: "🔍",
+        title: "No-Obligation Audit",
+        desc: "Claim a free AI-driven check to see how your current local presence appears to customers.",
+      },
+      {
+        icon: "🛠️",
+        title: "Practical Results",
+        desc: "We focus on clear, effective optimizations that help your business stand out in search results.",
+      },
+    ],
+  },
+  hu: {
+    title: "Javítsa helyi digitális jelenlétét",
+    name: "Cég (Opcionális)",
+    person: "Név",
+    email: "Email (Opcionális)",
+    phone: "Telefonszám (Opcionális)",
+    message: "Hogyan segíthetünk?",
+    send: "Üzenet Küldése",
+    sending: "Küldés...",
+    success: "Köszönjük az üzenetet. Hamarosan válaszolunk!",
+    error: "Nem sikerült elküldeni az üzenetet. Kérjük, próbálja újra.",
+    privacyPath: "/hu/privacy",
+    privacy: "adatkezelési tájékoztatóban",
+    consent: "Hozzájárulok a személyes adataim kezeléséhez az",
+    benefits: [
+      {
+        icon: "🎯",
+        title: "Szakértői Stratégia",
+        desc: "Testreszabott növekedési tervet kap, amellyel vállalkozása könnyen megtalálható lesz a helyi ügyfelek számára.",
+      },
+      {
+        icon: "⚡",
+        title: "Gyors Válasz",
+        desc: "Tiszteljük az idejét, és garantáljuk a profeszionális választ üzenetére 24 órán belül.",
+      },
+      {
+        icon: "🔍",
+        title: "Kötelezettségmentes Audit",
+        desc: "Ingyenes, AI-alapú ellenőrzés a jelenlegi helyi jelenlétéről.",
+      },
+      {
+        icon: "🛠️",
+        title: "Gyakorlati Eredmények",
+        desc: "Világos, hatékony optimalizálásokra összpontosítunk, amelyek segítik vállalkozását a keresési eredményekben.",
+      },
+    ],
+  },
+  ro: {
+    title: "Îmbunătățiți-vă prezența digitală locală",
+    name: "Numele Afacerii (Opțional)",
+    person: "Nume",
+    email: "Email (Opțional)",
+    phone: "Telefon (Opțional)",
+    message: "Cum vă putem ajuta?",
+    send: "Trimite Mesaj",
+    sending: "Se trimite...",
+    success: "Vă mulțumim pentru mesaj. Vă vom răspunde în curând!",
+    error: "Trimiterea mesajului a eșuat. Vă rugăm să încercați din nou.",
+    privacyPath: "/ro/privacy",
+    privacy: "politica de confidențialitate",
+    consent: "Sunt de acord cu prelucrarea datelor mele personale conform",
+    benefits: [
+      {
+        icon: "🎯",
+        title: "Strategie de Expert",
+        desc: "Primiți un plan de creștere personalizat, conceput pentru a face afacerea dvs. ușor de găsit de către clienții locali.",
+      },
+      {
+        icon: "⚡",
+        title: "Răspuns Rapid",
+        desc: "Vă respectăm timpul și garantăm un răspuns profesional la mesajul dvs. în termen de 24 de ore.",
+      },
+      {
+        icon: "🔍",
+        title: "Audit fără Obligații",
+        desc: "Solicitați o verificare gratuită bazată pe AI pentru a vedea cum apare prezența dvs. locală actuală clienților.",
+      },
+      {
+        icon: "🛠️",
+        title: "Rezultate Practice",
+        desc: "Ne concentrăm pe optimizări clare și eficiente care ajută afacerea dvs. să iasă în evidență în rezultatele căutării.",
+      },
+    ],
+  },
+};
+
+const t = content[lang as keyof typeof content] || content.en;
+---
+
+<section id="contact" class="py-24 bg-gray-50">
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+    <div class="text-center mb-12">
+      <h2 class="text-3xl md:text-4xl font-bold text-gray-900">{t.title}</h2>
+    </div>
+
+    <div class="grid lg:grid-cols-5 gap-12 items-start">
+      <!-- Contact Form -->
+      <div class="lg:col-span-3">
+        <form class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100">
+          <div class="grid md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2"
+                >{t.person}</label
+              >
+              <input
+                type="text"
+                name="name"
+                class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-shadow"
+                required
+              />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2"
+                >{t.name}</label
+              >
+              <input
+                type="text"
+                name="businessName"
+                class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-shadow"
+              />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2"
+                >{t.email}</label
+              >
+              <input
+                type="email"
+                id="contact-email"
+                name="email"
+                class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-shadow"
+              />
+            </div>
+            <div>
+              <label class="block text-sm font-medium text-gray-700 mb-2"
+                >{t.phone}</label
+              >
+              <input
+                type="tel"
+                id="contact-phone"
+                name="phone"
+                class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-shadow"
+              />
+            </div>
+          </div>
+          <div class="mb-6">
+            <label class="block text-sm font-medium text-gray-700 mb-2"
+              >{t.message}</label
+            >
+            <textarea
+              name="message"
+              class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-shadow"
+              rows="4"
+              required></textarea>
+          </div>
+
+          <div class="mb-8 flex items-start gap-3">
+            <input
+              type="checkbox"
+              id="gdpr-consent"
+              name="consent"
+              value="true"
+              required
+              class="mt-1 w-4 h-4 text-primary border-gray-300 rounded focus:ring-primary cursor-pointer"
+            />
+            <label
+              for="gdpr-consent"
+              class="text-sm text-gray-600 leading-tight"
+            >
+              {t.consent}
+              <a
+                href={t.privacyPath}
+                class="text-primary hover:underline font-medium">{t.privacy}</a
+              >.
+            </label>
+          </div>
+
+          <button
+            type="submit"
+            id="submit-btn"
+            class="w-full bg-primary text-white py-4 rounded-xl hover:bg-primary-hover cursor-pointer font-semibold shadow-lg shadow-primary/20 transition-all hover:-translate-y-1 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+          >
+            <span id="submit-text">{t.send}</span>
+          </button>
+        </form>
+      </div>
+
+      <!-- Sidebar Benefits -->
+      <div class="lg:col-span-2 space-y-8">
+        {
+          t.benefits.map((benefit) => (
+            <div class="flex gap-4">
+              <div class="flex-shrink-0 w-12 h-12 bg-white rounded-xl shadow-sm border border-gray-100 flex items-center justify-center text-2xl">
+                {benefit.icon}
+              </div>
+              <div>
+                <h3 class="text-lg font-bold text-gray-900 mb-1">
+                  {benefit.title}
+                </h3>
+                <p class="text-gray-600 leading-relaxed text-sm">
+                  {benefit.desc}
+                </p>
+              </div>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  const form = document.querySelector("form");
+  const submitBtn = document.getElementById("submit-btn") as HTMLButtonElement;
+  const submitText = document.getElementById("submit-text");
+
+  if (form && submitBtn && submitText) {
+    form.addEventListener("submit", async function (e) {
+      e.preventDefault();
+
+      const emailInput = document.getElementById(
+        "contact-email",
+      ) as HTMLInputElement;
+      const phoneInput = document.getElementById(
+        "contact-phone",
+      ) as HTMLInputElement;
+
+      // Check if at least email or phone is provided
+      if (!emailInput.value && !phoneInput.value) {
+        alert(
+          document.documentElement.lang === "hu"
+            ? "Kérjük, adja meg az e-mail címét vagy a telefonszámát!"
+            : document.documentElement.lang === "ro"
+              ? "Vă rugăm să furnizați o adresă de e-mail sau un număr de telefon!"
+              : "Please provide either an email or a phone number!",
+        );
+        return;
+      }
+
+      // Disable submit button and show loading state
+      submitBtn.disabled = true;
+      const originalText = submitText.textContent;
+      submitText.textContent =
+        document.documentElement.lang === "hu"
+          ? "Küldés..."
+          : document.documentElement.lang === "ro"
+            ? "Se trimite..."
+            : "Sending...";
+
+      try {
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData);
+
+        const response = await fetch("/contact.php", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(data),
+        });
+
+        const result = await response.json();
+
+        if (response.ok && result.success) {
+          // Show success message
+          const successMessage = document.createElement("div");
+          successMessage.className =
+            "fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded shadow-lg z-50";
+          successMessage.textContent =
+            document.documentElement.lang === "hu"
+              ? "Köszönjük az üzenetet. Hamarosan válaszolunk!"
+              : document.documentElement.lang === "ro"
+                ? "Vă mulțumim pentru mesaj. Vă vom răspunde în curând!"
+                : "Thank you for your message. We'll get back to you soon!";
+          document.body.appendChild(successMessage);
+
+          setTimeout(() => {
+            successMessage.remove();
+          }, 5000);
+
+          form.reset();
+        } else {
+          throw new Error(result.message || "Failed to send message");
+        }
+      } catch (error) {
+        // Show error message
+        const errorMessage = document.createElement("div");
+        errorMessage.className =
+          "fixed top-4 right-4 bg-red-500 text-white px-6 py-3 rounded shadow-lg z-50";
+        errorMessage.textContent =
+          document.documentElement.lang === "hu"
+            ? "Nem sikerült elküldeni az üzenetet. Kérjük, próbálja újra."
+            : document.documentElement.lang === "ro"
+              ? "Trimiterea mesajului a eșuat. Vă rugăm să încercați din nou."
+              : "Failed to send message. Please try again.";
+        document.body.appendChild(errorMessage);
+
+        setTimeout(() => {
+          errorMessage.remove();
+        }, 5000);
+
+        console.error("Form submission error:", error);
+      } finally {
+        // Re-enable submit button
+        submitBtn.disabled = false;
+        submitText.textContent = originalText;
+      }
+    });
+  }
+</script>

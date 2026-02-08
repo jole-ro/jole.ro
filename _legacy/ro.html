@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <script defer src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Jolero - Faceți-vă afacerea să strălucească online</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        .cursor-dot {
+            width: 5px;
+            height: 5px;
+            background-color: #6366f1;
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+        }
+
+        .cursor-outline {
+            width: 30px;
+            height: 30px;
+            border: 2px solid #6366f1;
+            position: fixed;
+            border-radius: 50%;
+            pointer-events: none;
+            z-index: 9999;
+            transition: transform 0.1s;
+        }
+    </style>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        primary: '#6366f1',
+                        secondary: '#ec4899'
+                    },
+                    borderRadius: {
+                        'none': '0px',
+                        'sm': '4px',
+                        DEFAULT: '8px',
+                        'md': '12px',
+                        'lg': '16px',
+                        'xl': '20px',
+                        '2xl': '24px',
+                        '3xl': '32px',
+                        'full': '9999px',
+                        'button': '8px'
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@400;500;600;700&display=swap"
+        rel="stylesheet">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+    <style>
+        :where([class^="ri-"])::before {
+            content: "\f3c2";
+        }
+
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+</head>
+
+<body class="bg-white">
+    <div class="cursor-dot"></div>
+    <div class="cursor-outline"></div>
+    <nav class="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-sm z-50 border-b">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-16">
+                <div class="flex items-center">
+                    <a href="#" class="font-['Pacifico'] text-2xl text-primary">logo</a>
+                </div>
+                <div class="hidden md:flex items-center space-x-8">
+                    <a href="#services" class="text-gray-700 hover:text-primary">Services</a>
+                    <a href="#benefits" class="text-gray-700 hover:text-primary">Benefits</a>
+                    <a href="#testimonials" class="text-gray-700 hover:text-primary">Testimonials</a>
+                    <div class="relative" x-data="{ open: false }">
+                        <button @click="open = !open" @click.away="open = false"
+                            class="flex items-center text-gray-700 hover:text-primary">
+                            <span class="mr-1">HU</span>
+                            <i class="ri-arrow-down-s-line"></i>
+                        </button>
+                        <div x-show="open"
+                            class="absolute right-0 mt-2 py-2 w-32 bg-white rounded-lg shadow-xl border border-gray-100">
+                            <a href="/" class="block px-4 py-2 text-gray-700 hover:bg-gray-50">English</a>
+                            <a href="hu.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-50">Magyar</a>
+                            <a href="ro.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-50">Română</a>
+                        </div>
+                    </div>
+                    <button
+                        class="bg-primary text-white px-6 py-2 !rounded-button hover:bg-primary/90 cursor-pointer whitespace-nowrap">Get
+                        Started</button>
+                </div>
+            </div>
+        </div>
+    </nav>
+    <main class="pt-16">
+        <section class="relative min-h-[80vh] flex items-center overflow-hidden" id="hero-section">
+            <video class="absolute inset-0 w-full h-full object-cover" autoplay loop muted playsinline>
+                <source src="/videos/hero-background.mp4" type="video/mp4">
+            </video>
+            <div class="absolute inset-0 bg-gradient-to-r from-white/95 to-white/50"></div>
+            <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+                <div class="max-w-2xl">
+                    <h1
+                        class="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary mb-6">
+                        Ajutăm afacerile locale să aibă succes online</h1>
+                    <p class="text-xl text-gray-600 mb-4">Faceți-vă afacerea să strălucească pe internet!</p>
+                    <p class="text-xl text-gray-600 mb-4">📍 Fiți găsit. Obțineți clienți. Creșteți-vă afacerea.</p>
+                    <p class="text-xl text-gray-600 mb-8">80% dintre consumatori caută online înainte de a vizita o
+                        afacere locală. Dacă afacerea dvs. nu este listată corespunzător sau nu iese în evidență,
+                        pierdeți clienți potențiali!</p>
+                    <div class="space-y-3 mb-8">
+                        <p class="text-lg text-gray-600 flex items-start">
+                            <span class="text-primary mr-2">✅</span>
+                            <span>Asigurați-vă că afacerea dvs. apare în locurile potrivite</span>
+                        </p>
+                        <p class="text-lg text-gray-600 flex items-start">
+                            <span class="text-primary mr-2">✅</span>
+                            <span>Solicitați, optimizați și gestionați toate listările într-un singur loc</span>
+                        </p>
+                        <p class="text-lg text-gray-600 flex items-start">
+                            <span class="text-primary mr-2">✅</span>
+                            <span>Creșteți activitatea pe social media și fiți mai ușor de descoperit</span>
+                        </p>
+                        <p class="text-lg text-gray-600 flex items-start">
+                            <span class="text-primary mr-2">✅</span>
+                            <span>Creșteți încrederea și vizibilitatea în comunitatea locală</span>
+                        </p>
+                    </div>
+                    <p class="text-xl text-gray-600 mb-8">💡 O prezență online puternică nu mai este opțională - este
+                        esențială!</p>
+                    <div class="flex gap-4">
+                        <button
+                            class="bg-primary text-white px-8 py-3 !rounded-button text-lg hover:bg-primary/90 cursor-pointer whitespace-nowrap">Începeți</button>
+                        <button
+                            class="border-2 border-primary text-primary px-8 py-3 !rounded-button text-lg hover:bg-primary/5 cursor-pointer whitespace-nowrap">Programați
+                            o demo</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="services" class="py-24 bg-gradient-to-b from-white to-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-4">Serviciile noastre</h2>
+                    <p class="text-lg text-gray-600">Soluții complete pentru creșterea prezenței afacerii dvs. locale
+                    </p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div
+                        class="bg-white p-8 rounded-lg shadow-sm hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+                        <div class="mb-8">
+                            <img src="https://public.readdy.ai/ai/img_res/5426efebddbde96589c58110dbf02325.jpg"
+                                alt="Business Listing Management" class="w-full h-48 object-cover rounded-lg mb-6">
+                            <div class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-lg mb-6">
+                                <i class="ri-store-3-line text-primary text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-4">Gestionarea listărilor de afaceri</h3>
+                            <p class="text-gray-600">Gestionați și optimizați listările afacerii dvs. pe toate
+                                platformele majore dintr-un tablou de bord central.</p>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-white p-8 rounded-lg shadow-sm hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+                        <div class="mb-8">
+                            <img src="https://public.readdy.ai/ai/img_res/ff67db5cc33547cdecf8b62fb10a98a9.jpg"
+                                alt="Social Media Optimization" class="w-full h-48 object-cover rounded-lg mb-6">
+                            <div class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-lg mb-6">
+                                <i class="ri-global-line text-primary text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-4">Optimizare social media</h3>
+                            <p class="text-gray-600">Creșteți-vă prezența pe social media cu conținut strategic și
+                                strategii de engagement.</p>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-white p-8 rounded-lg shadow-sm hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+                        <div class="mb-8">
+                            <img src="https://public.readdy.ai/ai/img_res/987c77d40cd39df7ff21e7aa9f4d0aae.jpg"
+                                alt="Local SEO Enhancement" class="w-full h-48 object-cover rounded-lg mb-6">
+                            <div class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-lg mb-6">
+                                <i class="ri-search-line text-primary text-2xl"></i>
+                            </div>
+                            <h3 class="text-xl font-semibold mb-4">Îmbunătățire SEO local</h3>
+                            <p class="text-gray-600">Îmbunătățiți-vă clasamentul în căutările locale și vizibilitatea
+                                pentru a atrage mai mulți clienți din apropiere.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="benefits" class="py-24 relative overflow-hidden">
+            <div class="absolute inset-0 bg-gradient-to-r from-primary/5 to-secondary/5 pointer-events-none"></div>
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-4">De ce să alegeți Jolero?</h2>
+                    <p class="text-lg text-gray-600">🔹 Peste 10 ani de experiență în listarea afacerilor - Gestionăm
+                        proiecte de listare a afacerilor de un deceniu</p>
+                </div>
+                <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                    <div class="text-center transform hover:-translate-y-2 transition-transform duration-300">
+                        <div
+                            class="w-16 h-16 flex items-center justify-center bg-gradient-to-br from-primary/10 to-secondary/10 rounded-full mx-auto mb-6">
+                            <i class="ri-medal-line text-primary text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Experiență profundă în industrie</h3>
+                        <p class="text-gray-600">Peste 10 ani de experiență în gestionarea listărilor de afaceri cu
+                            strategii dovedite</p>
+                    </div>
+                    <div class="text-center transform hover:-translate-y-2 transition-transform duration-300">
+                        <div
+                            class="w-16 h-16 flex items-center justify-center bg-gradient-to-br from-primary/10 to-secondary/10 rounded-full mx-auto mb-6">
+                            <i class="ri-customer-service-line text-primary text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Expertiză orientată către client</h3>
+                        <p class="text-gray-600">Peste 5 ani de colaborare directă cu afacerile, înțelegând provocările
+                            lor unice</p>
+                    </div>
+                    <div class="text-center transform hover:-translate-y-2 transition-transform duration-300">
+                        <div
+                            class="w-16 h-16 flex items-center justify-center bg-gradient-to-br from-primary/10 to-secondary/10 rounded-full mx-auto mb-6">
+                            <i class="ri-profile-line text-primary text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Background freelance</h3>
+                        <p class="text-gray-600">Peste 5 ani în creșterea prezenței online pentru micile afaceri din
+                            diverse industrii</p>
+                    </div>
+                    <div class="text-center transform hover:-translate-y-2 transition-transform duration-300">
+                        <div
+                            class="w-16 h-16 flex items-center justify-center bg-gradient-to-br from-primary/10 to-secondary/10 rounded-full mx-auto mb-6">
+                            <i class="ri-line-chart-line text-primary text-3xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">Rezultate reale</h3>
+                        <p class="text-gray-600">Strategii dovedite care ajută afacerile să fie găsite și să atragă
+                            clienți</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section id="testimonials" class="py-24 bg-gradient-to-b from-gray-50 to-white">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="text-center mb-16">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-4">Ce spun clienții noștri</h2>
+                    <p class="text-lg text-gray-600">Povești reale de la afaceri ca a dumneavoastră</p>
+                </div>
+                <div class="grid md:grid-cols-3 gap-8">
+                    <div
+                        class="bg-white p-8 rounded-lg shadow-sm hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+                        <div class="flex items-center mb-4">
+                            <div class="text-primary">
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-6">"Jolero ne-a transformat prezența online. Relațiile cu clienții
+                            s-au îmbunătățit semnificativ de când lucrăm cu ei."</p>
+                        <div class="flex items-center">
+                            <div class="flex-1">
+                                <h4 class="font-semibold">Elena Popescu</h4>
+                                <p class="text-gray-500 text-sm">Cafeneaua Florilor</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-white p-8 rounded-lg shadow-sm hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-6">"Echipa Jolero înțelege cu adevărat nevoile afacerilor locale. Am
+                            ajuns la clienți noi la care nici nu ne gândeam înainte."</p>
+                        <div class="flex items-center">
+                            <div class="flex-1">
+                                <h4 class="font-semibold">Mihai Ionescu</h4>
+                                <p class="text-gray-500 text-sm">Fierăria Ionescu</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div
+                        class="bg-white p-8 rounded-lg shadow-sm hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+                        <div class="flex items-center mb-4">
+                            <div class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                                <i class="ri-star-fill"></i>
+                            </div>
+                        </div>
+                        <p class="text-gray-600 mb-6">"Profesioniști, receptivi și orientați spre rezultate. Evaluările
+                            și recenziile noastre online s-au îmbunătățit dramatic."</p>
+                        <div class="flex items-center">
+                            <div class="flex-1">
+                                <h4 class="font-semibold">Sara Dumitrescu</h4>
+                                <p class="text-gray-500 text-sm">Centrul Wellness</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <section class="py-24 bg-gray-50">
+            <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+                <div class="max-w-3xl mx-auto text-center">
+                    <h2 class="text-3xl font-bold text-gray-900 mb-8">Sunteți gata să vă creșteți prezența locală?</h2>
+                    <form class="bg-white p-8 rounded-lg shadow-sm">
+                        <div class="grid md:grid-cols-2 gap-6 mb-6">
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Numele afacerii</label>
+                                <input type="text"
+                                    class="w-full px-4 py-2 border rounded focus:ring-2 focus:ring-primary focus:border-primary"
+                                    required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Persoană de contact</label>
+                                <input type="text"
+                                    class="w-full px-4 py-2 border rounded focus:ring-2 focus:ring-primary focus:border-primary"
+                                    required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">E-mail</label>
+                                <input type="email"
+                                    class="w-full px-4 py-2 border rounded focus:ring-2 focus:ring-primary focus:border-primary"
+                                    required>
+                            </div>
+                            <div>
+                                <label class="block text-sm font-medium text-gray-700 mb-2">Telefon</label>
+                                <input type="tel"
+                                    class="w-full px-4 py-2 border rounded focus:ring-2 focus:ring-primary focus:border-primary"
+                                    required>
+                            </div>
+                        </div>
+                        <div class="mb-6">
+                            <label class="block text-sm font-medium text-gray-700 mb-2">Mesaj</label>
+                            <textarea
+                                class="w-full px-4 py-2 border rounded focus:ring-2 focus:ring-primary focus:border-primary"
+                                rows="4" required></textarea>
+                        </div>
+                        <button type="submit"
+                            class="w-full bg-primary text-white py-3 !rounded-button hover:bg-primary/90 cursor-pointer whitespace-nowrap">Trimite
+                            mesajul</button>
+                    </form>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer class="bg-gradient-to-b from-gray-900 to-gray-800 text-white py-12">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid md:grid-cols-3 gap-8">
+                <div>
+                    <a href="#" class="font-['Pacifico'] text-2xl text-white mb-4 block">logo</a>
+                    <ul class="space-y-2">
+                        <li class="flex items-start text-gray-400">
+                            <span class="text-primary mr-2">•</span>
+                            <span>Making Your Business Shine Online!</span>
+                        </li>
+                        <li class="flex items-start text-gray-400">
+                            <span class="text-primary mr-2">•</span>
+                            <span>Get Found. Get Customers. Grow Your Business.</span>
+                        </li>
+                        <li class="flex items-start text-gray-400">
+                            <span class="text-primary mr-2">•</span>
+                            <span>A strong online presence is no longer optional—it's essential!</span>
+                        </li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Link-uri rapide</h4>
+                    <ul class="space-y-2">
+                        <li><a href="#services" class="text-gray-400 hover:text-white">Servicii</a></li>
+                        <li><a href="#benefits" class="text-gray-400 hover:text-white">Beneficii</a></li>
+                        <li><a href="#testimonials" class="text-gray-400 hover:text-white">Testimoniale</a></li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 class="text-lg font-semibold mb-4">Contact</h4>
+                    <ul class="space-y-2">
+                        <li class="flex items-center text-gray-400">
+                            <i class="ri-map-pin-line mr-2"></i>
+                            <span>123 Business Ave, Suite 100</span>
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="ri-phone-line mr-2"></i>
+                            <span>+1 (555) 123-4567</span>
+                        </li>
+                        <li class="flex items-center text-gray-400">
+                            <i class="ri-mail-line mr-2"></i>
+                            <span>contact@jolero.com</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+                <p class="text-gray-400">&copy; 2025 Jolero. Toate drepturile rezervate.</p>
+                <div class="flex space-x-4 mt-4 md:mt-0">
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="ri-facebook-fill text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="ri-twitter-fill text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="ri-linkedin-fill text-xl"></i>
+                    </a>
+                    <a href="#" class="text-gray-400 hover:text-white">
+                        <i class="ri-instagram-fill text-xl"></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </footer>
+    <script src="https://unpkg.com/alpinejs@3.x.x/dist/cdn.min.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const cursorDot = document.querySelector('.cursor-dot');
+            const cursorOutline = document.querySelector('.cursor-outline');
+            window.addEventListener('mousemove', function (e) {
+                const posX = e.clientX;
+                const posY = e.clientY;
+                cursorDot.style.left = `${posX}px`;
+                cursorDot.style.top = `${posY}px`;
+                cursorOutline.style.left = `${posX - 13}px`;
+                cursorOutline.style.top = `${posY - 13}px`;
+            });
+            document.addEventListener('mousedown', function () {
+                cursorOutline.style.transform = 'scale(0.8)';
+            });
+            document.addEventListener('mouseup', function () {
+                cursorOutline.style.transform = 'scale(1)';
+            });
+            const buttons = document.querySelectorAll('button, a');
+            buttons.forEach(button => {
+                button.addEventListener('mouseover', () => {
+                    cursorOutline.style.transform = 'scale(1.5)';
+                });
+                button.addEventListener('mouseout', () => {
+                    cursorOutline.style.transform = 'scale(1)';
+                });
+            });
+            const form = document.querySelector('form');
+            form.addEventListener('submit', function (e) {
+                e.preventDefault();
+                const formData = new FormData(form);
+                const data = Object.fromEntries(formData);
+                console.log('Form submitted:', data);
+                const successMessage = document.createElement('div');
+                successMessage.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded shadow-lg';
+                successMessage.textContent = 'Vă mulțumim pentru mesaj. Vă vom răspunde în curând!';
+                document.body.appendChild(successMessage);
+                setTimeout(() => {
+                    successMessage.remove();
+                }, 3000);
+                form.reset();
+            });
+        });
+    </script>
+</body>
+
+</html>

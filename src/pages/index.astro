@@ -1,0 +1,78 @@
+---
+import Layout from "../layouts/Layout.astro";
+import Hero from "../components/Hero.astro";
+import Services from "../components/Services.astro";
+import Benefits from "../components/Benefits.astro";
+import Testimonials from "../components/Testimonials.astro";
+import Contact from "../components/Contact.astro";
+import { getCollection } from "astro:content";
+
+const lang = "en";
+
+// Get 3 latest blog posts
+const allPosts = await getCollection("blog");
+const latestPosts = allPosts
+    .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+    .slice(0, 3);
+---
+
+<Layout title="Jolero - Making Your Business Shine Online" lang={lang}>
+    <Hero lang={lang} />
+    <Services lang={lang} />
+    <Benefits lang={lang} />
+    <Testimonials lang={lang} />
+
+    <!-- Latest from Blog Section -->
+    <section id="blog" class="py-24 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">
+                    Latest from Our Blog
+                </h2>
+                <p class="text-lg text-gray-600">
+                    Insights and tips to help your business grow
+                </p>
+            </div>
+            <div class="grid md:grid-cols-3 gap-8">
+                {
+                    latestPosts.map((post) => (
+                        <div class="bg-white rounded-lg shadow-sm hover:shadow-xl transition-shadow duration-300 border border-gray-100 overflow-hidden group">
+                            <img
+                                src={post.data.image}
+                                alt={post.data.title}
+                                class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300"
+                            />
+                            <div class="p-6">
+                                <div class="text-sm text-gray-500 mb-2">
+                                    {post.data.pubDate.toLocaleDateString(
+                                        "en-US",
+                                        {
+                                            year: "numeric",
+                                            month: "long",
+                                            day: "numeric",
+                                        },
+                                    )}
+                                </div>
+                                <h3 class="text-xl font-semibold mb-2 group-hover:text-indigo-600 transition-colors">
+                                    <a href={`/blog/${post.slug}/`}>
+                                        {post.data.title}
+                                    </a>
+                                </h3>
+                                <p class="text-gray-600 mb-4 line-clamp-3">
+                                    {post.data.description}
+                                </p>
+                                <a
+                                    href={`/blog/${post.slug}/`}
+                                    class="text-indigo-600 hover:text-indigo-500 font-medium flex items-center"
+                                >
+                                    Read More
+                                    <i class="ri-arrow-right-line ml-1" />
+                                </a>
+                            </div>
+                        </div>
+                    ))
+                }
+            </div>
+        </div>
+    </section>
+</Layout>

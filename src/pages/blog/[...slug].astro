@@ -1,0 +1,63 @@
+---
+import { getCollection } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import BlogFAQ from "../../components/BlogFAQ.astro";
+
+export async function getStaticPaths() {
+    const blogEntries = await getCollection("blog");
+    return blogEntries.map((entry) => ({
+        params: { slug: entry.slug },
+        props: { entry },
+    }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+---
+
+<Layout title={entry.data.title + " - Jolero Blog"}>
+    <main class="pt-24 pb-16">
+        <article class="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="mb-10 text-center">
+                <span
+                    class="text-primary font-semibold tracking-wide uppercase text-sm"
+                    >{
+                        entry.data.pubDate.toLocaleDateString("en-US", {
+                            year: "numeric",
+                            month: "long",
+                            day: "numeric",
+                        })
+                    }</span
+                >
+                <h1
+                    class="mt-2 text-4xl leading-tight font-bold text-gray-900 sm:text-5xl sm:leading-tight"
+                >
+                    {entry.data.title}
+                </h1>
+                {
+                    entry.data.image && (
+                        <img
+                            src={entry.data.image}
+                            alt={entry.data.title}
+                            class="mt-8 w-full h-80 object-cover rounded-2xl shadow-lg"
+                        />
+                    )
+                }
+            </div>
+
+            <div class="prose prose-lg prose-purple mx-auto text-gray-500">
+                <Content />
+            </div>
+
+            {entry.data.faqs && <BlogFAQ faqs={entry.data.faqs} />}
+
+            <div class="mt-16 border-t border-gray-200 pt-8 text-center">
+                <a
+                    href="/#blog"
+                    class="text-primary hover:text-purple-500 font-medium"
+                    >← Back to Home</a
+                >
+            </div>
+        </article>
+    </main>
+</Layout>

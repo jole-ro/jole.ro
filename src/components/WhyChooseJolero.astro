@@ -1,0 +1,133 @@
+---
+const {
+    lang = "en",
+    isGrid = true,
+    showHeader = true,
+    headingLevel = "h3",
+} = Astro.props;
+
+const content = {
+    en: {
+        title: "Why Choose Jolero?",
+        items: [
+            {
+                title: "Deep Industry Experience",
+                desc: "10+ years of managing business listings with proven strategies that work",
+                icon: "ri-medal-line",
+            },
+            {
+                title: "Client-Facing Expertise",
+                desc: "5+ years working directly with businesses, understanding their unique challenges",
+                icon: "ri-customer-service-line",
+            },
+            {
+                title: "Freelancing Background",
+                desc: "5+ years helping small businesses grow their online presence across industries",
+                icon: "ri-profile-line",
+            },
+            {
+                title: "Real-World Results",
+                desc: "Proven strategies that help businesses get found and attract customers",
+                icon: "ri-line-chart-line",
+            },
+        ],
+    },
+    hu: {
+        title: "Miért válassza a Jolero-t?",
+        items: [
+            {
+                title: "Mély iparági tapasztalat",
+                desc: "Több mint 10 év tapasztalat az üzleti adatbázisok kezelésében",
+                icon: "ri-medal-line",
+            },
+            {
+                title: "Ügyfélközpontú szakértelem",
+                desc: "5+ év közvetlen munka vállalkozásokkal, egyedi kihívásaik megértése",
+                icon: "ri-customer-service-line",
+            },
+            {
+                title: "Szabadúszó háttér",
+                desc: "5+ év segítségnyújtás kisvállalkozásoknak online jelenlétük növelésében",
+                icon: "ri-profile-line",
+            },
+            {
+                title: "Valós eredmények",
+                desc: "Bizonyított stratégiák, amelyek segítenek a vállalkozásoknak ügyfeleket szerezni",
+                icon: "ri-line-chart-line",
+            },
+        ],
+    },
+    ro: {
+        title: "De ce să alegi Jolero?",
+        items: [
+            {
+                title: "Experiență vastă în industrie",
+                desc: "Peste 10 ani de experiență în gestionarea listărilor de afaceri",
+                icon: "ri-medal-line",
+            },
+            {
+                title: "Expertiză orientată către client",
+                desc: "5+ ani de lucru direct cu afaceri, înțelegând provocările lor unice",
+                icon: "ri-customer-service-line",
+            },
+            {
+                title: "Background de freelancing",
+                desc: "5+ ani de ajutor pentru micile afaceri în creșterea prezenței online",
+                icon: "ri-profile-line",
+            },
+            {
+                title: "Rezultate reale",
+                desc: "Strategii dovedite care ajută afacerile să fie găsite și să atragă clienți",
+                icon: "ri-line-chart-line",
+            },
+        ],
+    },
+};
+
+const t = content[lang as keyof typeof content] || content.en;
+const TitleTag = headingLevel as any;
+---
+
+<div>
+    {
+        showHeader && (
+            <TitleTag
+                class={`font-bold text-gray-900 mb-6 ${isGrid ? "text-3xl text-center" : "text-xl font-pacifico"}`}
+            >
+                {t.title}
+            </TitleTag>
+        )
+    }
+
+    {
+        isGrid ? (
+            <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+                {t.items.map((item) => (
+                    <div class="text-center transform hover:-translate-y-2 transition-transform duration-300">
+                        <div class="w-16 h-16 flex items-center justify-center bg-gradient-to-br from-purple-100 to-pink-100 rounded-full mx-auto mb-6">
+                            <i class={`${item.icon} icon-gradient text-3xl`} />
+                        </div>
+                        <h3 class="text-xl font-semibold mb-2">{item.title}</h3>
+                        <p class="text-gray-600">{item.desc}</p>
+                    </div>
+                ))}
+            </div>
+        ) : (
+            <div class="grid gap-6">
+                {t.items.map((item) => (
+                    <div class="flex gap-4 items-start">
+                        <div class="w-10 h-10 flex-shrink-0 rounded-full bg-purple-100 flex items-center justify-center">
+                            <i class={`${item.icon} text-xl icon-gradient`} />
+                        </div>
+                        <div>
+                            <h4 class="font-medium text-gray-900 mb-1">
+                                {item.title}
+                            </h4>
+                            <p class="text-gray-700 text-sm">{item.desc}</p>
+                        </div>
+                    </div>
+                ))}
+            </div>
+        )
+    }
+</div>

@@ -1,0 +1,131 @@
+---
+interface Props {
+    id?: string;
+    quantity?: number;
+    colors?: string[];
+    interactive?: boolean;
+    className?: string;
+}
+
+const {
+    id = "tsparticles",
+    quantity = 250,
+    colors = ["#3498DB", "#9B59B6", "#FF5E5B"],
+    interactive = true,
+    className = "absolute inset-0",
+} = Astro.props;
+---
+
+<div
+    id={id}
+    class={className}
+    data-quantity={quantity}
+    data-colors={JSON.stringify(colors)}
+    data-interactive={interactive.toString()}
+>
+</div>
+
+<script>
+    import { tsParticles } from "tsparticles-engine";
+    import { loadSlim } from "tsparticles-slim";
+
+    async function initParticles(element: HTMLElement) {
+        const id = element.id;
+        const quantity = parseInt(element.dataset.quantity || "250");
+        const colors = JSON.parse(
+            element.dataset.colors || '["#3498DB", "#9B59B6", "#FF5E5B"]',
+        );
+        const interactive = element.dataset.interactive === "true";
+
+        await loadSlim(tsParticles);
+        const container = await tsParticles.load(id, {
+            fullScreen: { enable: false },
+            particles: {
+                number: {
+                    value: quantity,
+                    density: { enable: true, area: 800 },
+                },
+                color: {
+                    value: colors,
+                },
+                shape: {
+                    type: "polygon",
+                    polygon: {
+                        sides: 5,
+                    },
+                },
+                opacity: { value: 0.8, random: false },
+                size: {
+                    value: { min: 2, max: 7 },
+                    animation: {
+                        enable: true,
+                        speed: 7,
+                        sync: false,
+                        startValue: "random",
+                        destroy: "none",
+                    },
+                },
+                links: {
+                    enable: true,
+                    distance: 150,
+                    color: "random",
+                    opacity: 0.2,
+                    width: 1,
+                },
+                twinkle: {
+                    lines: {
+                        enable: true,
+                        frequency: 0.05,
+                        opacity: 1,
+                        color: "random",
+                    },
+                },
+                move: {
+                    enable: true,
+                    speed: 0.3,
+                    direction: "none",
+                    random: false,
+                    straight: false,
+                    outModes: { default: "out" },
+                    attract: { enable: false, rotateX: 600, rotateY: 1200 },
+                },
+            },
+            interactivity: {
+                detectsOn: "canvas",
+                events: {
+                    onHover: { enable: interactive, mode: "grab" },
+                    onClick: { enable: interactive, mode: "push" },
+                    resize: true,
+                },
+                modes: {
+                    grab: { distance: 250, links: { opacity: 1 } },
+                    push: { quantity: 4 },
+                },
+            },
+            retina_detect: true,
+        });
+
+        // Add new particles over time
+        if (container) {
+            const maxParticles = Math.floor(quantity * 3);
+            const interval = setInterval(() => {
+                if (
+                    container.particles.count < maxParticles &&
+                    !container.destroyed
+                ) {
+                    container.particles.push(1);
+                } else if (container.destroyed) {
+                    clearInterval(interval);
+                }
+            }, 1000); // Add a new particle every 3 seconds
+        }
+    }
+
+    // Find all particle containers and initialize them
+    const containers = document.querySelectorAll('[id^="tsparticles"]');
+    containers.forEach((container) => {
+        if (container instanceof HTMLElement) {
+            initParticles(container);
+        }
+    });
+</script>

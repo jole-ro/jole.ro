@@ -1,0 +1,260 @@
+---
+import Navbar from "../components/Navbar.astro";
+import Footer from "../components/Footer.astro";
+
+interface Props {
+    title: string;
+    lang?: string;
+}
+
+const { title, lang = "en" } = Astro.props;
+---
+
+<!doctype html>
+<html lang={lang} class="scroll-smooth">
+    <head>
+        <meta charset="UTF-8" />
+        <meta
+            name="description"
+            content="Jolero - Making Your Business Shine Online"
+        />
+        <meta name="viewport" content="width=device-width" />
+        <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+        <meta name="generator" content={Astro.generator} />
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+        <link
+            href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@400;500;600;700&display=swap"
+            rel="stylesheet"
+        />
+        <link
+            href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css"
+            rel="stylesheet"
+        />
+        <title>{title}</title>
+
+        <!-- Silktide Cookie Consent Manager -->
+        <link
+            rel="stylesheet"
+            id="silktide-consent-manager-css"
+            href="/cookie-banner/silktide-consent-manager.css"
+        />
+        <script is:inline src="/cookie-banner/silktide-consent-manager.js"
+        ></script>
+
+        <!-- Google Analytics & Consent Mode -->
+        <script
+            is:inline
+            define:vars={{
+                gaId: import.meta.env.PUBLIC_GA_ID || "G-XXXXXXXXXX",
+            }}
+        >
+            window.dataLayer = window.dataLayer || [];
+            function gtag() {
+                dataLayer.push(arguments);
+            }
+
+            // Default consent state
+            gtag("consent", "default", {
+                analytics_storage: "denied",
+                ad_storage: "denied",
+                ad_user_data: "denied",
+                ad_personalization: "denied",
+                wait_for_update: 500,
+            });
+
+            gtag("js", new Date());
+            gtag("config", gaId);
+
+            // Silktide Configuration
+            silktideCookieBannerManager.updateCookieBannerConfig({
+                background: {
+                    showBackground: true,
+                },
+                cookieIcon: {
+                    position: "bottomLeft",
+                },
+                cookieTypes: [
+                    {
+                        id: "necessary",
+                        name: "Necessary",
+                        description:
+                            "<p>These cookies are necessary for the website to function properly and cannot be switched off. They help with things like logging in and setting your privacy preferences.</p>",
+                        required: true,
+                        onAccept: function () {
+                            console.log("Necessary cookies accepted");
+                        },
+                    },
+                    {
+                        id: "analytics",
+                        name: "Analytics",
+                        description:
+                            "<p>These cookies help us improve the site by tracking which pages are most popular and how visitors move around the site.</p>",
+                        defaultValue: true,
+                        onAccept: function () {
+                            gtag("consent", "update", {
+                                analytics_storage: "granted",
+                            });
+                            dataLayer.push({
+                                event: "consent_accepted_analytics",
+                            });
+                        },
+                        onReject: function () {
+                            gtag("consent", "update", {
+                                analytics_storage: "denied",
+                            });
+                        },
+                    },
+                    {
+                        id: "advertising",
+                        name: "Advertising",
+                        description:
+                            "<p>These cookies provide extra features and personalization to improve your experience. They may be set by us or by partners whose services we use.</p>",
+                        onAccept: function () {
+                            gtag("consent", "update", {
+                                ad_storage: "granted",
+                                ad_user_data: "granted",
+                                ad_personalization: "granted",
+                            });
+                            dataLayer.push({
+                                event: "consent_accepted_advertising",
+                            });
+                        },
+                        onReject: function () {
+                            gtag("consent", "update", {
+                                ad_storage: "denied",
+                                ad_user_data: "denied",
+                                ad_personalization: "denied",
+                            });
+                        },
+                    },
+                ],
+                text: {
+                    banner: {
+                        description:
+                            '<p>We use cookies on our site to enhance your user experience, provide personalized content, and analyze our traffic. <a href="/privacy" target="_blank">Cookie Policy.</a></p>',
+                        acceptAllButtonText: "Accept all",
+                        acceptAllButtonAccessibleLabel: "Accept all cookies",
+                        rejectNonEssentialButtonText: "Reject non-essential",
+                        rejectNonEssentialButtonAccessibleLabel:
+                            "Reject non-essential",
+                        preferencesButtonText: "Preferences",
+                        preferencesButtonAccessibleLabel: "Toggle preferences",
+                    },
+                    preferences: {
+                        title: "Customize your cookie preferences",
+                        description:
+                            "<p>We respect your right to privacy. You can choose not to allow some types of cookies. Your cookie preferences will apply across our website.</p>",
+                        creditLinkText: "Get this banner for free",
+                        creditLinkAccessibleLabel: "Get this banner for free",
+                    },
+                },
+                position: {
+                    banner: "center",
+                },
+            });
+        </script>
+        <style is:global>
+            :where([class^="ri-"])::before {
+                content: "\f3c2";
+            }
+            body {
+                font-family: "Inter", sans-serif;
+            }
+            .font-pacifico {
+                font-family: "Pacifico", cursive;
+            }
+            .icon-gradient {
+                background: linear-gradient(
+                    to right,
+                    #3498db,
+                    #6a89cc,
+                    #9b59b6,
+                    #ff79a2,
+                    #ff5e5b
+                );
+                -webkit-background-clip: text;
+                -webkit-text-fill-color: transparent;
+                display: inline-block;
+            }
+        </style>
+    </head>
+    <body class="bg-white">
+        <Navbar lang={lang} />
+
+        <main class="pt-16">
+            <slot />
+        </main>
+
+        <Footer lang={lang} />
+
+        <!-- Cursor effect -->
+        <div class="cursor-dot hidden md:block"></div>
+        <div class="cursor-outline hidden md:block"></div>
+
+        <style>
+            .cursor-dot {
+                width: 5px;
+                height: 5px;
+                background-color: #9b59b6;
+                position: fixed;
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 9999;
+            }
+            .cursor-outline {
+                width: 30px;
+                height: 30px;
+                border: 2px solid #9b59b6;
+                position: fixed;
+                border-radius: 50%;
+                pointer-events: none;
+                z-index: 9999;
+                transition: transform 0.1s;
+            }
+        </style>
+        <script>
+            // Cursor logic
+            const cursorDot = document.querySelector(
+                ".cursor-dot",
+            ) as HTMLElement;
+            const cursorOutline = document.querySelector(
+                ".cursor-outline",
+            ) as HTMLElement;
+
+            if (cursorDot && cursorOutline) {
+                window.addEventListener("mousemove", function (e) {
+                    const posX = e.clientX;
+                    const posY = e.clientY;
+                    cursorDot.style.left = `${posX}px`;
+                    cursorDot.style.top = `${posY}px`;
+                    cursorOutline.style.left = `${posX - 13}px`;
+                    cursorOutline.style.top = `${posY - 13}px`;
+                });
+
+                document.addEventListener("mousedown", function () {
+                    cursorOutline.style.transform = "scale(0.8)";
+                });
+
+                document.addEventListener("mouseup", function () {
+                    cursorOutline.style.transform = "scale(1)";
+                });
+
+                const addHoverEffects = () => {
+                    const buttons = document.querySelectorAll("button, a");
+                    buttons.forEach((button) => {
+                        button.addEventListener("mouseover", () => {
+                            cursorOutline.style.transform = "scale(1.5)";
+                        });
+                        button.addEventListener("mouseout", () => {
+                            cursorOutline.style.transform = "scale(1)";
+                        });
+                    });
+                };
+
+                addHoverEffects();
+                // Re-run on navigation? Astro view transitions might need this, but for now standard navigation reloads page.
+            }
+        </script>
+    </body>
+</html>

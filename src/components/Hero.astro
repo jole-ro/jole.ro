@@ -1,0 +1,98 @@
+---
+const { lang = "en" } = Astro.props;
+import ParticlesBackground from "./ParticlesBackground.astro";
+
+const content = {
+  en: {
+    title: "Helping Local Businesses Succeed Online",
+    subtitle: "Making Your Business Shine Online!",
+    location: "📍 Get Found. Get Customers. Grow Your Business.",
+    description:
+      "80% of consumers search online before visiting a local business. If your business isn't listed correctly or doesn't stand out, you're missing potential customers!",
+    checks: [
+      "Ensure your business appears in the right places",
+      "Claim, optimize & manage all your listings in one place",
+      "Boost engagement on social media & get discovered",
+      "Increase trust and visibility in your local community",
+    ],
+    highlight:
+      "💡 A strong online presence is no longer optional—it's essential!",
+    cta: "Get Started Now",
+  },
+  hu: {
+    title: "Segítünk a helyi vállalkozásoknak online sikereket elérni",
+    subtitle: "Tegye ragyogóvá vállalkozását az interneten!",
+    location: "📍 Találják meg. Szerezzen ügyfeleket. Növelje üzletét.",
+    description:
+      "A fogyasztók 80%-a online keres, mielőtt meglátogatna egy helyi üzletet. Ha vállalkozása nem szerepel megfelelően, potenciális ügyfelektől esik el!",
+    checks: [
+      "Gondoskodjon róla, hogy vállalkozása a megfelelő helyeken jelenjen meg",
+      "Kezelje és optimalizálja összes adatát egy helyen",
+      "Növelje az elköteleződést a közösségi médiában",
+      "Növelje a bizalmat és a láthatóságot a helyi közösségben",
+    ],
+    highlight:
+      "💡 Az erős online jelenlét már nem választható – elengedhetetlen!",
+    cta: "Kezdés most",
+  },
+  ro: {
+    title: "Ajutăm afacerile locale să reușească online",
+    subtitle: "Fă-ți afacerea să strălucească online!",
+    location: "📍 Fii găsit. Obține clienți. Dezvoltă-ți afacerea.",
+    description:
+      "80% dintre consumatori caută online înainte de a vizita o afacere locală. Dacă afacerea ta nu este listată corect, pierzi clienți potențiali!",
+    checks: [
+      "Asigură-te că afacerea ta apare unde trebuie",
+      "Revendică, optimizează și gestionează toate listările într-un singur loc",
+      "Crește implicarea pe rețelele sociale",
+      "Crește încrederea și vizibilitatea în comunitatea locală",
+    ],
+    highlight:
+      "💡 O prezență online puternică nu mai este opțională — este esențială!",
+    cta: "Începe acum",
+  },
+};
+
+const t = content[lang as keyof typeof content] || content.en;
+---
+
+<section
+  class="relative min-h-[80vh] flex items-center overflow-hidden"
+  id="hero-section"
+>
+  <ParticlesBackground quantity={100} />
+  <div class="absolute inset-0 pointer-events-none"></div>
+  <div
+    class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-24 bg-[#fefffe]/90 backdrop-blur-sm border border-gray-200 rounded-3xl shadow-xl pointer-events-none"
+  >
+    <div class="max-w-2xl mt-8 mb-8 pointer-events-auto">
+      <h1
+        class="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-pink-500 mb-6 leading-tight"
+      >
+        {t.title}
+      </h1>
+      <p class="text-xl text-gray-600 mb-4">{t.subtitle}</p>
+      <p class="text-xl text-gray-600 mb-4">{t.location}</p>
+      <p class="text-xl text-gray-600 mb-8">{t.description}</p>
+      <div class="space-y-3 mb-8">
+        {
+          t.checks.map((check) => (
+            <p class="text-lg text-gray-600 flex items-start">
+              <i class="ri-checkbox-circle-fill icon-gradient mr-2 text-xl" />
+              <span>{check}</span>
+            </p>
+          ))
+        }
+      </div>
+      <p class="text-xl text-gray-600 mb-8">{t.highlight}</p>
+      <div class="flex gap-4">
+        <a
+          href={lang === "en" ? "/contact" : `/${lang}/contact`}
+          class="inline-block bg-primary text-white px-10 py-4 rounded-xl text-lg font-semibold hover:bg-primary-hover cursor-pointer whitespace-nowrap transition-all shadow-lg shadow-primary/20 hover:-translate-y-1 active:scale-95"
+        >
+          {t.cta}
+        </a>
+      </div>
+    </div>
+  </div>
+</section>

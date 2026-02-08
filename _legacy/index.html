@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Jolero - Making Your Business Shine Online</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    .cursor-dot {
+      width: 5px;
+      height: 5px;
+      background-color: #6366f1;
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+    }
+
+    .cursor-outline {
+      width: 30px;
+      height: 30px;
+      border: 2px solid #6366f1;
+      position: fixed;
+      border-radius: 50%;
+      pointer-events: none;
+      z-index: 9999;
+      transition: transform 0.1s;
+    }
+  </style>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#6366f1',
+            secondary: '#ec4899'
+          },
+          borderRadius: {
+            'none': '0px',
+            'sm': '4px',
+            DEFAULT: '8px',
+            'md': '12px',
+            'lg': '16px',
+            'xl': '20px',
+            '2xl': '24px',
+            '3xl': '32px',
+            'full': '9999px',
+            'button': '8px'
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Inter:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@4.5.0/fonts/remixicon.css" rel="stylesheet">
+  <style>
+    :where([class^="ri-"])::before {
+      content: "\f3c2";
+    }
+
+    body {
+      font-family: 'Inter', sans-serif;
+    }
+  </style>
+</head>
+
+<body class="bg-white">
+  <div class="cursor-dot"></div>
+  <div class="cursor-outline"></div>
+  <nav class="fixed top-0 left-0 right-0 bg-white/90 backdrop-blur-sm z-50 border-b"
+    style="background: linear-gradient(to right, #3498DB, #6A89CC, #9B59B6, #FF79A2, #FF5E5B);">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex justify-between h-16">
+        <div class="flex items-center">
+          <a href="#" class="font-['Pacifico'] text-2xl text-primary">logo</a>
+        </div>
+        <div class="hidden md:flex items-center space-x-8">
+          <a href="#services" class="text-gray-700 hover:text-primary">Services</a>
+          <a href="#benefits" class="text-gray-700 hover:text-primary">Benefits</a>
+          <a href="#testimonials" class="text-gray-700 hover:text-primary">Testimonials</a>
+          <div class="relative" x-data="{ open: false }">
+            <button @click="open = !open" @click.away="open = false"
+              class="flex items-center text-gray-700 hover:text-primary">
+              <span class="mr-1">HU</span>
+              <i class="ri-arrow-down-s-line"></i>
+            </button>
+            <div x-show="open"
+              class="absolute right-0 mt-2 py-2 w-32 bg-white rounded-lg shadow-xl border border-gray-100">
+              <a href="index.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-50">English</a>
+              <a href="hu.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-50">Magyar</a>
+              <a href="ro.html" class="block px-4 py-2 text-gray-700 hover:bg-gray-50">Română</a>
+            </div>
+          </div>
+          <button
+            class="bg-primary text-white px-6 py-2 !rounded-button hover:bg-primary/90 cursor-pointer whitespace-nowrap">Get
+            Started</button>
+        </div>
+      </div>
+    </div>
+  </nav>
+  <main class="pt-16">
+    <section class="relative min-h-[80vh] flex items-center overflow-hidden" id="hero-section">
+      <video class="absolute inset-0 w-full h-full object-cover" autoplay loop muted playsinline>
+        <source src="/videos/hero-background.mp4" type="video/mp4">
+      </video>
+      <div class="absolute inset-0 bg-gradient-to-r from-white/95 to-white/50"></div>
+      <div class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-24">
+        <div class="max-w-2xl">
+          <h1 class="text-5xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-primary to-secondary mb-6">
+            Helping Local Businesses Succeed Online</h1>
+          <p class="text-xl text-gray-600 mb-4">Making Your Business Shine Online!</p>
+          <p class="text-xl text-gray-600 mb-4">📍 Get Found. Get Customers. Grow Your Business.</p>
+          <p class="text-xl text-gray-600 mb-8">80% of consumers search online before visiting a local business. If your
+            business isn't listed correctly or doesn't stand out, you're missing potential customers!</p>
+          <div class="space-y-3 mb-8">
+            <p class="text-lg text-gray-600 flex items-start">
+              <span class="text-primary mr-2">☑️</span>
+              <span>Ensure your business appears in the right places</span>
+            </p>
+            <p class="text-lg text-gray-600 flex items-start">
+              <span class="text-primary mr-2">☑️</span>
+              <span>Claim, optimize & manage all your listings in one place</span>
+            </p>
+            <p class="text-lg text-gray-600 flex items-start">
+              <span class="text-primary mr-2">☑️</span>
+              <span>Boost engagement on social media & get discovered</span>
+            </p>
+            <p class="text-lg text-gray-600 flex items-start">
+              <span class="text-primary mr-2">☑️</span>
+              <span>Increase trust and visibility in your local community</span>
+            </p>
+          </div>
+          <p class="text-xl text-gray-600 mb-8">💡 A strong online presence is no longer optional—it's essential!</p>
+          <div class="flex gap-4">
+            <button
+              class="bg-primary text-white px-8 py-3 !rounded-button text-lg hover:bg-primary/90 cursor-pointer whitespace-nowrap">Get
+              Started</button>
+            <button
+              class="border-2 border-primary text-primary px-8 py-3 !rounded-button text-lg hover:bg-primary/5 cursor-pointer whitespace-nowrap">Contact
+              us</button>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="services" class="py-24 bg-gradient-to-b from-white to-gray-50"
+      style="background: linear-gradient(to right, #3498DB, #6A89CC, #9B59B6, #FF79A2, #FF5E5B);">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">Our Services</h2>
+          <p class="text-lg text-gray-600">Comprehensive solutions to boost your local business presence</p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div
+            class="bg-white p-8 rounded-lg shadow-sm hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+            <div class="mb-8">
+              <img src="https://public.readdy.ai/ai/img_res/5426efebddbde96589c58110dbf02325.jpg"
+                alt="Business Listing Management" class="w-full h-48 object-cover rounded-lg mb-6">
+              <div class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-lg mb-6">
+                <i class="ri-store-3-line text-primary text-2xl"></i>
+              </div>
+              <h3 class="text-xl font-semibold mb-4">Business Listing Management</h3>
+              <p class="text-gray-600">Manage and optimize your business listings across all major platforms from one
+                central dashboard.</p>
+            </div>
+          </div>
+          <div
+            class="bg-white p-8 rounded-lg shadow-sm hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+            <div class="mb-8">
+              <img src="https://public.readdy.ai/ai/img_res/ff67db5cc33547cdecf8b62fb10a98a9.jpg"
+                alt="Social Media Optimization" class="w-full h-48 object-cover rounded-lg mb-6">
+              <div class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-lg mb-6">
+                <i class="ri-global-line text-primary text-2xl"></i>
+              </div>
+              <h3 class="text-xl font-semibold mb-4">Social Media Optimization</h3>
+              <p class="text-gray-600">Enhance your social media presence with strategic content and engagement
+                strategies.</p>
+            </div>
+          </div>
+          <div
+            class="bg-white p-8 rounded-lg shadow-sm hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+            <div class="mb-8">
+              <img src="https://public.readdy.ai/ai/img_res/987c77d40cd39df7ff21e7aa9f4d0aae.jpg"
+                alt="Local SEO Enhancement" class="w-full h-48 object-cover rounded-lg mb-6">
+              <div class="w-12 h-12 flex items-center justify-center bg-primary/10 rounded-lg mb-6">
+                <i class="ri-search-line text-primary text-2xl"></i>
+              </div>
+              <h3 class="text-xl font-semibold mb-4">Local SEO Enhancement</h3>
+              <p class="text-gray-600">Improve your local search rankings and visibility to attract more nearby
+                customers.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="benefits" class="py-24 relative overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-r from-primary/5 to-secondary/5 pointer-events-none"></div>
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">Why Choose Jolero?</h2>
+          <p class="text-lg text-gray-600">🔹 Over 10 Years of Experience in Business Listings – We've managed business
+            listing projects for a decade</p>
+        </div>
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
+          <div class="text-center transform hover:-translate-y-2 transition-transform duration-300">
+            <div
+              class="w-16 h-16 flex items-center justify-center bg-gradient-to-br from-primary/10 to-secondary/10 rounded-full mx-auto mb-6">
+              <i class="ri-medal-line text-primary text-3xl"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Deep Industry Experience</h3>
+            <p class="text-gray-600">10+ years of managing business listings with proven strategies that work</p>
+          </div>
+          <div class="text-center transform hover:-translate-y-2 transition-transform duration-300">
+            <div
+              class="w-16 h-16 flex items-center justify-center bg-gradient-to-br from-primary/10 to-secondary/10 rounded-full mx-auto mb-6">
+              <i class="ri-customer-service-line text-primary text-3xl"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Client-Facing Expertise</h3>
+            <p class="text-gray-600">5+ years working directly with businesses, understanding their unique challenges
+            </p>
+          </div>
+          <div class="text-center transform hover:-translate-y-2 transition-transform duration-300">
+            <div
+              class="w-16 h-16 flex items-center justify-center bg-gradient-to-br from-primary/10 to-secondary/10 rounded-full mx-auto mb-6">
+              <i class="ri-profile-line text-primary text-3xl"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Freelancing Background</h3>
+            <p class="text-gray-600">5+ years helping small businesses grow their online presence across industries</p>
+          </div>
+          <div class="text-center transform hover:-translate-y-2 transition-transform duration-300">
+            <div
+              class="w-16 h-16 flex items-center justify-center bg-gradient-to-br from-primary/10 to-secondary/10 rounded-full mx-auto mb-6">
+              <i class="ri-line-chart-line text-primary text-3xl"></i>
+            </div>
+            <h3 class="text-xl font-semibold mb-2">Real-World Results</h3>
+            <p class="text-gray-600">Proven strategies that help businesses get found and attract customers</p>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section class="py-24 bg-gray-50"
+      style="background: linear-gradient(to right, #FF5E5B, #FF79A2, #9B59B6, #6A89CC, #3498DB);">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="max-w-3xl mx-auto text-center">
+          <h2 class="text-3xl font-bold text-gray-900 mb-8">Ready to boost your local presence?</h2>
+          <form class="bg-white p-8 rounded-lg shadow-sm">
+            <div class="grid md:grid-cols-2 gap-6 mb-6">
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Business Name</label>
+                <input type="text"
+                  class="w-full px-4 py-2 border rounded focus:ring-2 focus:ring-primary focus:border-primary" required>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Contact Person</label>
+                <input type="text"
+                  class="w-full px-4 py-2 border rounded focus:ring-2 focus:ring-primary focus:border-primary" required>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Email</label>
+                <input type="email"
+                  class="w-full px-4 py-2 border rounded focus:ring-2 focus:ring-primary focus:border-primary" required>
+              </div>
+              <div>
+                <label class="block text-sm font-medium text-gray-700 mb-2">Phone</label>
+                <input type="tel"
+                  class="w-full px-4 py-2 border rounded focus:ring-2 focus:ring-primary focus:border-primary" required>
+              </div>
+            </div>
+            <div class="mb-6">
+              <label class="block text-sm font-medium text-gray-700 mb-2">Message</label>
+              <textarea class="w-full px-4 py-2 border rounded focus:ring-2 focus:ring-primary focus:border-primary"
+                rows="4" required></textarea>
+            </div>
+            <button type="submit"
+              class="w-full bg-primary text-white py-3 !rounded-button hover:bg-primary/90 cursor-pointer whitespace-nowrap">Send
+              Message</button>
+          </form>
+        </div>
+      </div>
+    </section>
+    <section id="testimonials" class="py-24 bg-gradient-to-b from-gray-50 to-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">What Our Clients Say</h2>
+          <p class="text-lg text-gray-600">Real stories from businesses like yours</p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div
+            class="bg-white p-8 rounded-lg shadow-sm hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+            <div class="flex items-center mb-4">
+              <div class="text-primary">
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+              </div>
+            </div>
+            <p class="text-gray-600 mb-6">"Jolero has transformed our online presence. Our customer engagement has
+              increased significantly since we started working with them."</p>
+            <div class="flex items-center">
+              <div class="flex-1">
+                <h4 class="font-semibold">Emily Richardson</h4>
+                <p class="text-gray-500 text-sm">Bloom Cafe</p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="bg-white p-8 rounded-lg shadow-sm hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+            <div class="flex items-center mb-4">
+              <div class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+              </div>
+            </div>
+            <p class="text-gray-600 mb-6">"The team at Jolero really understands local business needs. They've helped us
+              reach new customers we never thought possible."</p>
+            <div class="flex items-center">
+              <div class="flex-1">
+                <h4 class="font-semibold">Michael Anderson</h4>
+                <p class="text-gray-500 text-sm">Anderson Hardware</p>
+              </div>
+            </div>
+          </div>
+          <div
+            class="bg-white p-8 rounded-lg shadow-sm hover:shadow-xl transition-shadow duration-300 border border-gray-100">
+            <div class="flex items-center mb-4">
+              <div class="bg-gradient-to-r from-primary to-secondary bg-clip-text text-transparent">
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+                <i class="ri-star-fill"></i>
+              </div>
+            </div>
+            <p class="text-gray-600 mb-6">"Professional, responsive, and results-driven. Our online reviews and ratings
+              have improved dramatically."</p>
+            <div class="flex items-center">
+              <div class="flex-1">
+                <h4 class="font-semibold">Sarah Thompson</h4>
+                <p class="text-gray-500 text-sm">Wellness Center</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+    <section id="blog" class="py-24 bg-white">
+      <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-16">
+          <h2 class="text-3xl font-bold text-gray-900 mb-4">
+            Latest from Our Blog
+          </h2>
+          <p class="text-lg text-gray-600">
+            Insights and tips to help your business grow
+          </p>
+        </div>
+        <div class="grid md:grid-cols-3 gap-8">
+          <div
+            class="bg-white rounded-lg shadow-sm hover:shadow-xl transition-shadow duration-300 border border-gray-100 overflow-hidden group">
+            <img src="https://public.readdy.ai/ai/img_res/b71d25c749550e82c7f5099c14db0e94.jpg"
+              alt="Digital Marketing Tips"
+              class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
+            <div class="p-6">
+              <div class="text-sm text-gray-500 mb-2">March 8, 2025</div>
+              <h3 class="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
+                <a href="/blog/is-your-business-losing-customers-NAP-consistency.html">Is Your Business Losing
+                  Customers? The Importance of NAP Consistency and How Business Listing Management Can Solve Your
+                  Problem
+                </a>
+              </h3>
+              <p class="text-gray-600 mb-4">
+                From this blog post, you'll learn the critical importance of NAP (Name, Address, Phone number)
+                consistency for your business's online presence, local SEO, and customer trust. It also highlights how
+                using a business listing management service like Jolero can help maintain accurate information across
+                all platforms, ensuring you don't lose customers or business opportunities.
+              </p>
+              <a href="/blog/is-your-business-losing-customers-NAP-consistency.html"
+                class="text-primary hover:text-primary/80 font-medium flex items-center">
+                Read More
+                <i class="ri-arrow-right-line ml-1"></i>
+              </a>
+            </div>
+          </div>
+          <div
+            class="bg-white rounded-lg shadow-sm hover:shadow-xl transition-shadow duration-300 border border-gray-100 overflow-hidden group">
+            <img src="https://public.readdy.ai/ai/img_res/1b3b18e9c5cfc10117005b899b555166.jpg"
+              alt="Social Media Strategy"
+              class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
+            <div class="p-6">
+              <div class="text-sm text-gray-500 mb-2">Febr 6, 2025</div>
+              <h3 class="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
+                Building a Winning Social Media Strategy
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Discover how to create an effective social media strategy that
+                engages your audience and drives business growth.
+              </p>
+              <a href="#" class="text-primary hover:text-primary/80 font-medium flex items-center">
+                Read More
+                <i class="ri-arrow-right-line ml-1"></i>
+              </a>
+            </div>
+          </div>
+          <div
+            class="bg-white rounded-lg shadow-sm hover:shadow-xl transition-shadow duration-300 border border-gray-100 overflow-hidden group">
+            <img src="https://public.readdy.ai/ai/img_res/168ffe78ab864ac21eba4d13bb934f94.jpg" alt="Local SEO Guide"
+              class="w-full h-48 object-cover group-hover:scale-105 transition-transform duration-300" />
+            <div class="p-6">
+              <div class="text-sm text-gray-500 mb-2">Jan 4, 2025</div>
+              <h3 class="text-xl font-semibold mb-2 group-hover:text-primary transition-colors">
+                The Ultimate Guide to Local SEO
+              </h3>
+              <p class="text-gray-600 mb-4">
+                Master the fundamentals of local SEO to improve your
+                business's visibility in local search results.
+              </p>
+              <a href="#" class="text-primary hover:text-primary/80 font-medium flex items-center">
+                Read More
+                <i class="ri-arrow-right-line ml-1"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer class="bg-gradient-to-b from-gray-900 to-gray-800 text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="grid md:grid-cols-3 gap-8">
+        <div>
+          <a href="#" class="font-['Pacifico'] text-2xl text-white mb-4 block">logo</a>
+          <ul class="space-y-2">
+            <li class="flex items-start text-gray-400">
+              <span class="text-primary mr-2">•</span>
+              <span>Making Your Business Shine Online!</span>
+            </li>
+            <li class="flex items-start text-gray-400">
+              <span class="text-primary mr-2">•</span>
+              <span>Get Found. Get Customers. Grow Your Business.</span>
+            </li>
+            <li class="flex items-start text-gray-400">
+              <span class="text-primary mr-2">•</span>
+              <span>A strong online presence is no longer optional—it's essential!</span>
+            </li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4">Quick Links</h4>
+          <ul class="space-y-2">
+            <li><a href="#services" class="text-gray-400 hover:text-white">Services</a></li>
+            <li><a href="#benefits" class="text-gray-400 hover:text-white">Benefits</a></li>
+            <li><a href="#testimonials" class="text-gray-400 hover:text-white">Testimonials</a></li>
+          </ul>
+        </div>
+        <div>
+          <h4 class="text-lg font-semibold mb-4">Contact</h4>
+          <ul class="space-y-2">
+            <li class="flex items-center text-gray-400">
+              <i class="ri-map-pin-line mr-2"></i>
+              <span>123 Business Ave, Suite 100</span>
+            </li>
+            <li class="flex items-center text-gray-400">
+              <i class="ri-phone-line mr-2"></i>
+              <span>+1 (555) 123-4567</span>
+            </li>
+            <li class="flex items-center text-gray-400">
+              <i class="ri-mail-line mr-2"></i>
+              <span>contact@jolero.com</span>
+            </li>
+          </ul>
+        </div>
+      </div>
+      <div class="border-t border-gray-800 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
+        <p class="text-gray-400">&copy; 2025 Jolero. All rights reserved.</p>
+        <div class="flex space-x-4 mt-4 md:mt-0">
+          <a href="#" class="text-gray-400 hover:text-white">
+            <i class="ri-facebook-fill text-xl"></i>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-white">
+            <i class="ri-twitter-fill text-xl"></i>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-white">
+            <i class="ri-linkedin-fill text-xl"></i>
+          </a>
+          <a href="#" class="text-gray-400 hover:text-white">
+            <i class="ri-instagram-fill text-xl"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <script>
+    document.addEventListener('DOMContentLoaded', function () {
+      const cursorDot = document.querySelector('.cursor-dot');
+      const cursorOutline = document.querySelector('.cursor-outline');
+      window.addEventListener('mousemove', function (e) {
+        const posX = e.clientX;
+        const posY = e.clientY;
+        cursorDot.style.left = `${posX}px`;
+        cursorDot.style.top = `${posY}px`;
+        cursorOutline.style.left = `${posX - 13}px`;
+        cursorOutline.style.top = `${posY - 13}px`;
+      });
+      document.addEventListener('mousedown', function () {
+        cursorOutline.style.transform = 'scale(0.8)';
+      });
+      document.addEventListener('mouseup', function () {
+        cursorOutline.style.transform = 'scale(1)';
+      });
+      const buttons = document.querySelectorAll('button, a');
+      buttons.forEach(button => {
+        button.addEventListener('mouseover', () => {
+          cursorOutline.style.transform = 'scale(1.5)';
+        });
+        button.addEventListener('mouseout', () => {
+          cursorOutline.style.transform = 'scale(1)';
+        });
+      });
+      const form = document.querySelector('form');
+      form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        const formData = new FormData(form);
+        const data = Object.fromEntries(formData);
+        console.log('Form submitted:', data);
+        const successMessage = document.createElement('div');
+        successMessage.className = 'fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded shadow-lg';
+        successMessage.textContent = 'Thank you for your message. We\'ll get back to you soon!';
+        document.body.appendChild(successMessage);
+        setTimeout(() => {
+          successMessage.remove();
+        }, 3000);
+        form.reset();
+      });
+    });
+  </script>
+</body>
+
+</html>

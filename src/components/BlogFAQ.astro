@@ -1,0 +1,53 @@
+---
+interface Props {
+    faqs: {
+        question: string;
+        answer: string;
+    }[];
+}
+
+const { faqs } = Astro.props;
+
+if (!faqs || faqs.length === 0) return null;
+
+const schemaData = {
+    "@context": "https://schema.org",
+    "@type": "FAQPage",
+    mainEntity: faqs.map((faq) => ({
+        "@type": "Question",
+        name: faq.question,
+        acceptedAnswer: {
+            "@type": "Answer",
+            text: faq.answer,
+        },
+    })),
+};
+---
+
+<section class="mt-16 pt-8 border-t border-gray-100">
+    <div class="flex items-center gap-2 mb-8">
+        <i class="ri-question-line text-2xl icon-gradient"></i>
+        <h2 class="text-2xl font-bold text-gray-900">
+            Frequently Asked Questions
+        </h2>
+    </div>
+
+    <div class="space-y-6">
+        {
+            faqs.map((faq) => (
+                <div class="bg-gray-50 rounded-xl p-6 transition-all hover:shadow-sm border border-transparent hover:border-purple-100">
+                    <h3 class="text-lg font-semibold text-gray-900 mb-3 flex gap-3">
+                        <span class="text-primary font-bold">Q:</span>
+                        {faq.question}
+                    </h3>
+                    <div class="text-gray-600 pl-8 leading-relaxed">
+                        <p>{faq.answer}</p>
+                    </div>
+                </div>
+            ))
+        }
+    </div>
+</section>
+
+<!-- Structured Data -->
+<script type="application/ld+json" set:html={JSON.stringify(schemaData)} />

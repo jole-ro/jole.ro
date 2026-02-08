@@ -1,0 +1,37 @@
+---
+import WhyChooseJolero from "./WhyChooseJolero.astro";
+const { lang = "en" } = Astro.props;
+
+const content = {
+  en: {
+    subtitle:
+      "🔹 Over 10 Years of Experience in Business Listings – We've managed business listing projects for a decade",
+  },
+  hu: {
+    subtitle:
+      "🔹 Több mint 10 év tapasztalat az üzleti adatbázisok kezelésében",
+  },
+  ro: {
+    subtitle:
+      "🔹 Peste 10 ani de experiență în gestionarea listărilor de afaceri",
+  },
+};
+
+const t = content[lang as keyof typeof content] || content.en;
+---
+
+<section id="benefits" class="py-24 relative overflow-hidden">
+  <div
+    class="absolute inset-0 bg-gradient-to-r from-purple-50 to-pink-50 pointer-events-none"
+  >
+  </div>
+  <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative">
+    <div class="text-center mb-16">
+      <p class="text-lg text-gray-600">
+        {t.subtitle}
+      </p>
+    </div>
+
+    <WhyChooseJolero lang={lang} isGrid={true} headingLevel="h2" />
+  </div>
+</section>

@@ -1,0 +1,186 @@
+---
+const { lang = "en" } = Astro.props;
+
+const content = {
+    en: {
+        quickLinks: "Quick Links",
+        follow: "Follow Us",
+        privacy: "Privacy Policy",
+        links: {
+            services: "Services",
+            benefits: "Benefits",
+            testimonials: "Testimonials",
+            contact: "Contact",
+        },
+        about: [
+            "Making Your Business Shine Online!",
+            "Get Found. Get Customers. Grow Your Business.",
+            "A strong online presence is no longer optional—it's essential!",
+        ],
+    },
+    hu: {
+        quickLinks: "Gyors Linkek",
+        follow: "Kövess Minket",
+        privacy: "Adatvédelmi Nyilatkozat",
+        links: {
+            services: "Szolgáltatások",
+            benefits: "Előnyök",
+            testimonials: "Vélemények",
+            contact: "Kapcsolat",
+        },
+        about: [
+            "Tegye ragyogóvá vállalkozását az interneten!",
+            "Találják meg. Szerezzen ügyfeleket. Növelje üzletét.",
+            "Az erős online jelenlét már nem választható – elengedhetetlen!",
+        ],
+    },
+    ro: {
+        quickLinks: "Link-uri Rapide",
+        follow: "Urmărește-ne",
+        privacy: "Politica de Confidențialitate",
+        links: {
+            services: "Servicii",
+            benefits: "Beneficii",
+            testimonials: "Testimoniale",
+            contact: "Contact",
+        },
+        about: [
+            "Fă-ți afacerea să strălucească online!",
+            "Fii găsit. Obține clienți. Dezvoltă-ți afacerea.",
+            "O prezență online puternică nu mai este opțională — este esențială!",
+        ],
+    },
+};
+
+const t = content[lang as keyof typeof content] || content.en;
+const privacyPath = lang === "en" ? "/privacy" : `/${lang}/privacy`;
+---
+
+<footer class="bg-gradient-to-b from-gray-900 to-gray-800 text-white py-12">
+    <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid md:grid-cols-3 gap-8">
+            <!-- About Section -->
+            <div>
+                <a href={lang === "en" ? "/" : `/${lang}/`} class="block mb-6">
+                    <img
+                        src="/images/logo.svg"
+                        alt="Jolero"
+                        class="h-10 w-auto brightness-0 invert"
+                    />
+                </a>
+                <ul class="space-y-4">
+                    {
+                        t.about.map((item) => (
+                            <li class="flex items-start text-gray-400 text-sm leading-relaxed">
+                                <span class="icon-gradient mr-2 flex-shrink-0">
+                                    •
+                                </span>
+                                <span>{item}</span>
+                            </li>
+                        ))
+                    }
+                </ul>
+            </div>
+
+            <!-- Links Section -->
+            <div>
+                <h4 class="text-lg font-semibold mb-6">{t.quickLinks}</h4>
+                <ul class="space-y-3">
+                    <li>
+                        <a
+                            href={lang === "en"
+                                ? "/#services"
+                                : `/${lang}/#services`}
+                            class="text-gray-400 hover:text-white transition-colors"
+                            >{t.links.services}</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href={lang === "en"
+                                ? "/#benefits"
+                                : `/${lang}/#benefits`}
+                            class="text-gray-400 hover:text-white transition-colors"
+                            >{t.links.benefits}</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href={lang === "en"
+                                ? "/#testimonials"
+                                : `/${lang}/#testimonials`}
+                            class="text-gray-400 hover:text-white transition-colors"
+                            >{t.links.testimonials}</a
+                        >
+                    </li>
+                    <li>
+                        <a
+                            href={lang === "en"
+                                ? "/contact"
+                                : `/${lang}/contact`}
+                            class="text-gray-400 hover:text-white transition-colors"
+                            >{t.links.contact}</a
+                        >
+                    </li>
+                    <li class="pt-2 border-t border-gray-800">
+                        <a
+                            href={privacyPath}
+                            class="text-gray-400 hover:text-white transition-colors text-sm"
+                            >{t.privacy}</a
+                        >
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Social/Follow Section -->
+            <div>
+                <h4 class="text-lg font-semibold mb-6">{t.follow}</h4>
+                <div class="grid grid-cols-4 gap-4 max-w-[200px]">
+                    <a
+                        href="#"
+                        class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-primary transition-all group"
+                        aria-label="Facebook"
+                    >
+                        <i
+                            class="ri-facebook-fill text-xl group-hover:scale-110"
+                        ></i>
+                    </a>
+                    <a
+                        href="#"
+                        class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-primary transition-all group"
+                        aria-label="Twitter"
+                    >
+                        <i class="ri-twitter-fill text-xl group-hover:scale-110"
+                        ></i>
+                    </a>
+                    <a
+                        href="#"
+                        class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-primary transition-all group"
+                        aria-label="LinkedIn"
+                    >
+                        <i
+                            class="ri-linkedin-fill text-xl group-hover:scale-110"
+                        ></i>
+                    </a>
+                    <a
+                        href="#"
+                        class="w-10 h-10 bg-gray-800 rounded-lg flex items-center justify-center text-gray-400 hover:text-white hover:bg-primary transition-all group"
+                        aria-label="Instagram"
+                    >
+                        <i
+                            class="ri-instagram-fill text-xl group-hover:scale-110"
+                        ></i>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div
+            class="border-t border-gray-800 mt-12 pt-8 text-center md:text-left"
+        >
+            <p class="text-gray-500 text-sm">
+                &copy; 2026 Jolero. All rights reserved. JOLERO SRL
+            </p>
+        </div>
+    </div>
+</footer>
