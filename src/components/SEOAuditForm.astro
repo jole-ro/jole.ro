@@ -4,7 +4,7 @@ import SEOAuditWizard from "./SEOAuditWizard.astro";
 
 const content = {
     en: {
-        title: "Request Your Free SEO Audit",
+        title: "Request Your Free Website Audit",
         subtitle:
             "Get a detailed analysis of your website's search performance and clear steps to improve it.",
         benefits: [
@@ -31,7 +31,7 @@ const content = {
         ],
     },
     hu: {
-        title: "Kérje ingyenes SEO auditját",
+        title: "Kérje ingyenes weboldal auditját",
         subtitle:
             "Részletes elemzést kap weboldala keresési teljesítményéről és egyértelmű lépéseket a javításhoz.",
         benefits: [
@@ -58,7 +58,7 @@ const content = {
         ],
     },
     ro: {
-        title: "Solicită Auditul SEO Gratuit",
+        title: "Solicită Auditul Website Gratuit",
         subtitle:
             "Primești o analiză detaliată a performanței site-ului tău în căutări și pași clari pentru îmbunătățire.",
         benefits: [
@@ -99,7 +99,7 @@ const t = content[lang as keyof typeof content] || content.en;
         </div>
 
         <div class="grid lg:grid-cols-5 gap-12 items-start">
-            <!-- SEO Audit Form -->
+            <!-- Free Website Audit Form -->
             <div class="lg:col-span-3">
                 <SEOAuditWizard lang={lang} />
             </div>

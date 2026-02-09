@@ -1,26 +1,71 @@
 ---
 const lang = Astro.props.lang || "en";
 
+const languageRoutes: Record<string, Record<string, string>> = {
+  en: {
+    home: "/",
+    audit: "/seo-audit",
+    contact: "/contact",
+    privacy: "/privacy",
+  },
+  hu: {
+    home: "/hu/",
+    audit: "/hu/ingyenes-seo-audit",
+    contact: "/hu/contact",
+    privacy: "/hu/privacy",
+  },
+  ro: {
+    home: "/ro/",
+    audit: "/ro/audit-seo-gratuit",
+    contact: "/ro/contact",
+    privacy: "/ro/privacy",
+  },
+};
+
+const pathname = Astro.url.pathname;
+
+const getPageKey = (path: string) => {
+  const normalizedPath = path.endsWith("/") ? path : `${path}/`;
+  for (const [l, routes] of Object.entries(languageRoutes)) {
+    for (const [key, route] of Object.entries(routes)) {
+      const normalizedRoute = route.endsWith("/") ? route : `${route}/`;
+      if (normalizedPath === normalizedRoute) {
+        return key;
+      }
+    }
+  }
+  return null;
+};
+
+const pageKey = getPageKey(pathname);
+
+const getLangLink = (targetLang: string) => {
+  if (pageKey && languageRoutes[targetLang][pageKey]) {
+    return languageRoutes[targetLang][pageKey];
+  }
+  return languageRoutes[targetLang].home;
+};
+
 const navItems: Record<string, { name: string; href: string }[]> = {
   en: [
     { name: "Services", href: "/#services" },
     { name: "Benefits", href: "/#benefits" },
     { name: "Testimonials", href: "/#testimonials" },
-    { name: "SEO Audit", href: "/seo-audit" },
+    { name: "Free Website Audit", href: "/seo-audit" },
     { name: "Contact", href: "/contact" },
   ],
   hu: [
     { name: "Szolgáltatások", href: "/hu/#services" },
     { name: "Előnyök", href: "/hu/#benefits" },
     { name: "Vélemények", href: "/hu/#testimonials" },
-    { name: "SEO Audit", href: "/hu/ingyenes-seo-audit" },
+    { name: "Ingyenes Weboldal Audit", href: "/hu/ingyenes-seo-audit" },
     { name: "Kapcsolat", href: "/hu/contact" },
   ],
   ro: [
     { name: "Servicii", href: "/ro/#services" },
     { name: "Beneficii", href: "/ro/#benefits" },
     { name: "Testimoniale", href: "/ro/#testimonials" },
-    { name: "Audit SEO", href: "/ro/audit-seo-gratuit" },
+    { name: "Audit Website Gratuit", href: "/ro/audit-seo-gratuit" },
     { name: "Contact", href: "/ro/contact" },
   ],
 };
@@ -63,15 +108,17 @@ const langLabel = lang.toUpperCase();
             <div
               class="bg-white rounded-lg shadow-xl border border-gray-100 py-2"
             >
-              <a href="/" class="block px-4 py-2 text-gray-700 hover:bg-gray-50"
+              <a
+                href={getLangLink("en")}
+                class="block px-4 py-2 text-gray-700 hover:bg-gray-50"
                 >English</a
               >
               <a
-                href="/hu/"
+                href={getLangLink("hu")}
                 class="block px-4 py-2 text-gray-700 hover:bg-gray-50">Magyar</a
               >
               <a
-                href="/ro/"
+                href={getLangLink("ro")}
                 class="block px-4 py-2 text-gray-700 hover:bg-gray-50">Română</a
               >
             </div>

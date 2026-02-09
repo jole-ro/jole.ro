@@ -7,7 +7,7 @@ const content = {
         email: "Email Address",
         next: "Next Step",
         back: "Go Back",
-        send: "Request Free Audit",
+        send: "Request Free Website Audit",
         sending: "Processing...",
         successTitle: "Audit Request Received!",
         successMessage:
@@ -23,7 +23,7 @@ const content = {
         email: "Email cím",
         next: "Következő lépés",
         back: "Vissza",
-        send: "Ingyenes Audit Kérése",
+        send: "Ingyenes Weboldal Audit Kérése",
         sending: "Folyamatban...",
         successTitle: "Audit kérés elküldve!",
         successMessage:
@@ -38,7 +38,7 @@ const content = {
         email: "Adresă de Email",
         next: "Pasul Următor",
         back: "Pasul Anterior",
-        send: "Solicită Audit Gratuit",
+        send: "Solicită Audit Website Gratuit",
         sending: "Se procesează...",
         successTitle: "Solicitare Trimisă cu Succes!",
         successMessage:
@@ -222,8 +222,8 @@ const t = content[lang as keyof typeof content] || content.en;
                         },
                         body: JSON.stringify({
                             ...data,
-                            _subject: `WIZARD: New SEO Audit Request - ${data.website}`,
-                            source: "SEO Audit Wizard Component",
+                            _subject: `WIZARD: New Website Audit Request - ${data.website}`,
+                            source: "Website Audit Wizard Component",
                         }),
                     },
                 );
