@@ -1,6 +1,6 @@
 ---
 import Layout from "../layouts/Layout.astro";
-import SEOAuditForm from "../components/SEOAuditForm.astro";
+import SEOAuditWizard from "../components/SEOAuditWizard.astro";
 
 const lang = "en";
 ---
@@ -36,8 +36,10 @@ const lang = "en";
                     </h1>
                     <p class="text-xl text-gray-600 mb-8 leading-relaxed">
                         Stop guessing why your competitors are ranking higher.
-                        Our free SEO audit provides deep insights and a clear
-                        roadmap to dominate search results.
+                        Our <strong>free SEO audit</strong> provides <strong
+                            >deep insights</strong
+                        > and a <strong>clear roadmap</strong> to dominate search
+                        results.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-6">
                         <div class="flex items-center gap-3">
@@ -61,71 +63,79 @@ const lang = "en";
                         </div>
                     </div>
                 </div>
-                <div class="relative">
-                    <div
-                        class="absolute -inset-4 bg-gradient-to-tr from-indigo-500 to-blue-500 rounded-3xl blur-2xl opacity-10"
-                    >
-                    </div>
-                    <div
-                        class="relative bg-white rounded-3xl shadow-2xl border border-gray-100 p-8"
-                    >
-                        <div class="space-y-6">
-                            <div class="flex items-center gap-4">
-                                <div
-                                    class="w-12 h-12 rounded-2xl bg-indigo-50 flex items-center justify-center text-indigo-600"
-                                >
-                                    <i class="ri-search-eye-line text-2xl"></i>
-                                </div>
-                                <div>
-                                    <h3 class="font-bold text-gray-900">
-                                        Technical Audit
-                                    </h3>
-                                    <p class="text-sm text-gray-600">
-                                        We check speed, mobile-friendliness, and
-                                        crawlability.
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="flex items-center gap-4">
-                                <div
-                                    class="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600"
-                                >
-                                    <i class="ri-key-2-line text-2xl"></i>
-                                </div>
-                                <div>
-                                    <h3 class="font-bold text-gray-900">
-                                        Keyword Analysis
-                                    </h3>
-                                    <p class="text-sm text-gray-600">
-                                        See which keywords your competitors are
-                                        winning.
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="flex items-center gap-4">
-                                <div
-                                    class="w-12 h-12 rounded-2xl bg-purple-50 flex items-center justify-center text-purple-600"
-                                >
-                                    <i class="ri-links-line text-2xl"></i>
-                                </div>
-                                <div>
-                                    <h3 class="font-bold text-gray-900">
-                                        Backlink Profile
-                                    </h3>
-                                    <p class="text-sm text-gray-600">
-                                        Understand your authority and
-                                        link-building needs.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="relative z-20">
+                    <SEOAuditWizard lang={lang} />
                 </div>
             </div>
         </div>
     </section>
 
-    <SEOAuditForm lang={lang} />
+    <!-- What's Included Section -->
+    <section class="py-20 bg-gray-50 border-y border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">
+                    What's Included in Your Free Audit
+                </h2>
+                <p class="text-lg text-gray-600">
+                    A comprehensive look at your digital presence.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div
+                    class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100"
+                >
+                    <div
+                        class="w-12 h-12 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-600 mb-6"
+                    >
+                        <i class="ri-search-eye-line text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">
+                        Technical SEO
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        We analyze your site structure, mobile performance, and
+                        core web vitals to ensure Google can find you easily.
+                    </p>
+                </div>
+
+                <div
+                    class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100"
+                >
+                    <div
+                        class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 mb-6"
+                    >
+                        <i class="ri-map-pin-user-line text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">
+                        Local Visibility
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Check your Google Business Profile optimization and
+                        visibility in local map packs for your target areas.
+                    </p>
+                </div>
+
+                <div
+                    class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100"
+                >
+                    <div
+                        class="w-12 h-12 rounded-xl bg-purple-50 flex items-center justify-center text-purple-600 mb-6"
+                    >
+                        <i class="ri-line-chart-line text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">
+                        Competitive Analysis
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        See how you rank against your top local competitors and
+                        identify the "easy wins" they are currently missing.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <section class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

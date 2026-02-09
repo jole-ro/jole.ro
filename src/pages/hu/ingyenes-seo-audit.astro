@@ -1,6 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import SEOAuditForm from "../../components/SEOAuditForm.astro";
+import SEOAuditWizard from "../../components/SEOAuditWizard.astro";
 
 const lang = "hu";
 ---
@@ -36,9 +36,10 @@ const lang = "hu";
                     </h1>
                     <p class="text-xl text-gray-600 mb-8 leading-relaxed">
                         Ne találgasson tovább, miért előzik meg versenytársai.
-                        **Helyi SEO** auditunk pontos képet ad a **Google Cégem
-                        optimalizálás** állapotáról és egy világos utat mutat a
-                        **helyi ügyfélszerzéshez**.
+                        <strong>Helyi SEO</strong> auditunk pontos képet ad a <strong
+                            >Google Cégem optimalizálás</strong
+                        > állapotáról és egy világos utat mutat a
+                        <strong>helyi ügyfélszerzéshez</strong>.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-6">
                         <div class="flex items-center gap-3">
@@ -62,72 +63,81 @@ const lang = "hu";
                         </div>
                     </div>
                 </div>
-                <div class="relative">
-                    <div
-                        class="absolute -inset-4 bg-gradient-to-tr from-indigo-500 to-blue-500 rounded-3xl blur-2xl opacity-10"
-                    >
-                    </div>
-                    <div
-                        class="relative bg-white rounded-3xl shadow-2xl border border-gray-100 p-8"
-                    >
-                        <div class="space-y-6">
-                            <div class="flex items-center gap-4">
-                                <div
-                                    class="w-12 h-12 rounded-2xl bg-indigo-50 flex items-center justify-center text-indigo-600"
-                                >
-                                    <i class="ri-search-eye-line text-2xl"></i>
-                                </div>
-                                <div>
-                                    <h3 class="font-bold text-gray-900">
-                                        Technikai & NAP Audit
-                                    </h3>
-                                    <p class="text-sm text-gray-600">
-                                        Ellenőrizzük a sebességet, az adatok
-                                        konzisztenciáját (NAP) és a
-                                        keresőoptimalizálást.
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="flex items-center gap-4">
-                                <div
-                                    class="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600"
-                                >
-                                    <i class="ri-key-2-line text-2xl"></i>
-                                </div>
-                                <div>
-                                    <h3 class="font-bold text-gray-900">
-                                        Kulcsszó Elemzés
-                                    </h3>
-                                    <p class="text-sm text-gray-600">
-                                        Lássa, mely kulcsszavakra építenek a
-                                        versenytársai.
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="flex items-center gap-4">
-                                <div
-                                    class="w-12 h-12 rounded-2xl bg-purple-50 flex items-center justify-center text-purple-600"
-                                >
-                                    <i class="ri-links-line text-2xl"></i>
-                                </div>
-                                <div>
-                                    <h3 class="font-bold text-gray-900">
-                                        Backlink Profil
-                                    </h3>
-                                    <p class="text-sm text-gray-600">
-                                        Értse meg weboldala tekintélyét és a
-                                        linképítési igényeit.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="relative z-20">
+                    <SEOAuditWizard lang={lang} />
                 </div>
             </div>
         </div>
     </section>
 
-    <SEOAuditForm lang={lang} />
+    <!-- What's Included Section -->
+    <section class="py-20 bg-gray-50 border-y border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">
+                    Mit Tartalmaz az Ingyenes SEO Audit?
+                </h2>
+                <p class="text-lg text-gray-600">
+                    Átfogó kép az Ön digitális jelenlétéről.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div
+                    class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100"
+                >
+                    <div
+                        class="w-12 h-12 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-600 mb-6"
+                    >
+                        <i class="ri-search-eye-line text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">
+                        Technikai SEO Audit
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Elemezzük webhelye szerkezetét, mobil teljesítményét és
+                        a Core Web Vitals mutatókat a zökkenőmentes indexelés
+                        érdekében.
+                    </p>
+                </div>
+
+                <div
+                    class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100"
+                >
+                    <div
+                        class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 mb-6"
+                    >
+                        <i class="ri-map-pin-user-line text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">
+                        Helyi Láthatóság
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Ellenőrizzük Google Cégem profilját és láthatóságát a
+                        helyi térképes találatok között a célterületein.
+                    </p>
+                </div>
+
+                <div
+                    class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100"
+                >
+                    <div
+                        class="w-12 h-12 rounded-xl bg-purple-50 flex items-center justify-center text-purple-600 mb-6"
+                    >
+                        <i class="ri-line-chart-line text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">
+                        Versenytárs Elemzés
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Nézze meg, hogyan áll a helyi versenytársaival szemben,
+                        és azonosítsa azokat a lehetőségeket, amelyeket ők
+                        elmulasztanak.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <section class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

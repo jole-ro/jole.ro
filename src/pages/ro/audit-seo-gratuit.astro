@@ -1,6 +1,6 @@
 ---
 import Layout from "../../layouts/Layout.astro";
-import SEOAuditForm from "../../components/SEOAuditForm.astro";
+import SEOAuditWizard from "../../components/SEOAuditWizard.astro";
 
 const lang = "ro";
 ---
@@ -36,10 +36,11 @@ const lang = "ro";
                     </h1>
                     <p class="text-xl text-gray-600 mb-8 leading-relaxed">
                         Nu mai lăsa succesul la voia întâmplării. Auditul nostru
-                        de **SEO Local** și **digitalizare IMM** îți oferă o
-                        imagine clară asupra **Optimizării Google Business
-                        Profile** și un plan concret pentru a atrage mai mulți
-                        clienți locali.
+                        de <strong>SEO Local</strong> și <strong
+                            >digitalizare IMM</strong
+                        > îți oferă o imagine clară asupra <strong
+                            >Optimizării Google Business Profile</strong
+                        > și un plan concret pentru a atrage mai mulți clienți locali.
                     </p>
                     <div class="flex flex-col sm:flex-row gap-6">
                         <div class="flex items-center gap-3">
@@ -63,72 +64,81 @@ const lang = "ro";
                         </div>
                     </div>
                 </div>
-                <div class="relative">
-                    <div
-                        class="absolute -inset-4 bg-gradient-to-tr from-indigo-500 to-blue-500 rounded-3xl blur-2xl opacity-10"
-                    >
-                    </div>
-                    <div
-                        class="relative bg-white rounded-3xl shadow-2xl border border-gray-100 p-8"
-                    >
-                        <div class="space-y-6">
-                            <div class="flex items-center gap-4">
-                                <div
-                                    class="w-12 h-12 rounded-2xl bg-indigo-50 flex items-center justify-center text-indigo-600"
-                                >
-                                    <i class="ri-search-eye-line text-2xl"></i>
-                                </div>
-                                <div>
-                                    <h3 class="font-bold text-gray-900">
-                                        Audit Tehnic & NAP
-                                    </h3>
-                                    <p class="text-sm text-gray-600">
-                                        Verificăm viteza, indexabilitatea și
-                                        consistența datelor (NAP) pentru
-                                        vizibilitate maximă.
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="flex items-center gap-4">
-                                <div
-                                    class="w-12 h-12 rounded-2xl bg-blue-50 flex items-center justify-center text-blue-600"
-                                >
-                                    <i class="ri-key-2-line text-2xl"></i>
-                                </div>
-                                <div>
-                                    <h3 class="font-bold text-gray-900">
-                                        Analiza Cuvintelor Cheie
-                                    </h3>
-                                    <p class="text-sm text-gray-600">
-                                        Vedeți pe ce termeni câștigă concurenții
-                                        dvs.
-                                    </p>
-                                </div>
-                            </div>
-                            <div class="flex items-center gap-4">
-                                <div
-                                    class="w-12 h-12 rounded-2xl bg-purple-50 flex items-center justify-center text-purple-600"
-                                >
-                                    <i class="ri-links-line text-2xl"></i>
-                                </div>
-                                <div>
-                                    <h3 class="font-bold text-gray-900">
-                                        Profil Backlink
-                                    </h3>
-                                    <p class="text-sm text-gray-600">
-                                        Înțelegeți autoritatea dvs. și nevoile
-                                        de link-building.
-                                    </p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
+                <div class="relative z-20">
+                    <SEOAuditWizard lang={lang} />
                 </div>
             </div>
         </div>
     </section>
 
-    <SEOAuditForm lang={lang} />
+    <!-- What's Included Section -->
+    <section class="py-20 bg-gray-50 border-y border-gray-100">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16">
+                <h2 class="text-3xl font-bold text-gray-900 mb-4">
+                    Ce Include Auditul Tău SEO Gratuit
+                </h2>
+                <p class="text-lg text-gray-600">
+                    O privire cuprinzătoare asupra prezenței tale digitale.
+                </p>
+            </div>
+
+            <div class="grid md:grid-cols-3 gap-8">
+                <div
+                    class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100"
+                >
+                    <div
+                        class="w-12 h-12 rounded-xl bg-indigo-50 flex items-center justify-center text-indigo-600 mb-6"
+                    >
+                        <i class="ri-search-eye-line text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">
+                        Audit SEO Tehnic
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Analizăm structura site-ului, performanța pe mobil și
+                        indicatorii Core Web Vitals pentru a asigura o indexare
+                        corectă.
+                    </p>
+                </div>
+
+                <div
+                    class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100"
+                >
+                    <div
+                        class="w-12 h-12 rounded-xl bg-blue-50 flex items-center justify-center text-blue-600 mb-6"
+                    >
+                        <i class="ri-map-pin-user-line text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">
+                        Vizibilitate Locală
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Verificăm optimizarea Google Business Profile și
+                        vizibilitatea în Google Maps pentru zonele tale țintă.
+                    </p>
+                </div>
+
+                <div
+                    class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100"
+                >
+                    <div
+                        class="w-12 h-12 rounded-xl bg-purple-50 flex items-center justify-center text-purple-600 mb-6"
+                    >
+                        <i class="ri-line-chart-line text-2xl"></i>
+                    </div>
+                    <h3 class="text-xl font-bold text-gray-900 mb-3">
+                        Analiză Concurențială
+                    </h3>
+                    <p class="text-gray-600 leading-relaxed">
+                        Vezi cum te situezi față de principalii competitori
+                        locali și identifică oportunitățile pe care aceștia le
+                        ratează.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <section class="py-20 bg-white">
         <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
