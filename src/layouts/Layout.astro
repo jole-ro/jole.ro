@@ -8,16 +8,21 @@ interface Props {
 }
 
 const { title, lang = "en" } = Astro.props;
+const descriptions = {
+    en: "Helping local businesses excel with expert SEO, Google Business Profile optimization, and trusted local lead generation strategies.",
+    hu: "Segítünk a helyi vállalkozásoknak kitűnni szakértő SEO megoldásokkal, Google Cégem optimalizálással és megbízható ügyfélszerzési stratégiákkal.",
+    ro: "Susținem digitalizarea IMM-urilor prin SEO local, optimizare Google Business Profile și strategii de încredere pentru generarea de clienți noi.",
+};
+
+const description =
+    descriptions[lang as keyof typeof descriptions] || descriptions.en;
 ---
 
 <!doctype html>
 <html lang={lang} class="scroll-smooth">
     <head>
         <meta charset="UTF-8" />
-        <meta
-            name="description"
-            content="Jolero - Making Your Business Shine Online"
-        />
+        <meta name="description" content={description} />
         <meta name="viewport" content="width=device-width" />
         <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
         <meta name="generator" content={Astro.generator} />
