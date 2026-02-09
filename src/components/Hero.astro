@@ -19,6 +19,8 @@ const content = {
     highlight:
       "💡 A strong online presence is no longer just an option. It's essential if you want to be seen in AI and modern search.",
     cta: "Get Started Now",
+    audit: "Free SEO Audit",
+    auditLink: "/seo-audit",
   },
   hu: {
     title: "Szakértő Helyi SEO, hogy vállalkozása sikeres legyen online",
@@ -36,6 +38,8 @@ const content = {
     highlight:
       "💡 Az erős online jelenlét már nem csak egy lehetőség. Elengedhetetlen az AI és a modern keresők világában!",
     cta: "Kezdés most",
+    audit: "Ingyenes SEO Audit",
+    auditLink: "/hu/ingyenes-seo-audit",
   },
   ro: {
     title: "SEO Local de Expert pentru succesul afacerii tale online",
@@ -54,6 +58,8 @@ const content = {
     highlight:
       "💡 O prezență online puternică nu mai este o simplă opțiune. Este esențială pentru vizibilitatea în AI și căutările moderne!",
     cta: "Începe acum",
+    audit: "Audit SEO Gratuit",
+    auditLink: "/ro/audit-seo-gratuit",
   },
 };
 
@@ -89,12 +95,18 @@ const t = content[lang as keyof typeof content] || content.en;
         }
       </div>
       <p class="text-xl text-gray-600 mb-8">{t.highlight}</p>
-      <div class="flex gap-4">
+      <div class="flex flex-wrap gap-4">
         <a
           href={lang === "en" ? "/contact" : `/${lang}/contact`}
           class="inline-block bg-primary text-white px-10 py-4 rounded-xl text-lg font-semibold hover:bg-primary-hover cursor-pointer whitespace-nowrap transition-all shadow-lg shadow-primary/20 hover:-translate-y-1 active:scale-95"
         >
           {t.cta}
+        </a>
+        <a
+          href={t.auditLink}
+          class="inline-block bg-white text-primary border-2 border-primary px-10 py-4 rounded-xl text-lg font-semibold hover:bg-gray-50 cursor-pointer whitespace-nowrap transition-all shadow-lg shadow-gray-200/50 hover:-translate-y-1 active:scale-95"
+        >
+          {t.audit}
         </a>
       </div>
     </div>

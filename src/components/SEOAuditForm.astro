@@ -6,17 +6,16 @@ const content = {
         title: "Request Your Free SEO Audit",
         subtitle:
             "Get a detailed analysis of your website's search performance and clear steps to improve it.",
-        name: "Business Name",
-        person: "Name",
-        email: "Email",
-        phone: "Phone (Optional)",
         website: "Website URL",
-        message: "Anything specific you'd like us to look at?",
+        email: "Email Address",
+        next: "Next Step",
+        back: "Go Back",
         send: "Request Free Audit",
-        sending: "Sending...",
-        success:
-            "Thank you! We've received your request and will get back to you with your audit soon.",
-        error: "Failed to send request. Please try again.",
+        sending: "Processing...",
+        successTitle: "Audit Request Received!",
+        successMessage:
+            "Our team will perform a detailed manual audit of your website and send you the results via email within max. 2 business days.",
+        error: "Something went wrong. Please try again.",
         privacyPath: "/privacy",
         privacy: "Privacy Policy",
         consent:
@@ -48,17 +47,16 @@ const content = {
         title: "Kérje ingyenes SEO auditját",
         subtitle:
             "Részletes elemzést kap weboldala keresési teljesítményéről és egyértelmű lépéseket a javításhoz.",
-        name: "Cég név",
-        person: "Név",
-        email: "Email",
-        phone: "Telefonszám (Opcionális)",
         website: "Weboldal címe",
-        message: "Van valami konkrétum, amit megvizsgáljunk?",
+        email: "Email cím",
+        next: "Következő lépés",
+        back: "Vissza",
         send: "Ingyenes Audit Kérése",
-        sending: "Küldés...",
-        success:
-            "Köszönjük! Megkaptuk kérését, és hamarosan jelentkezünk az audittal.",
-        error: "Sikertelen küldés. Kérjük, próbálja újra.",
+        sending: "Folyamatban...",
+        successTitle: "Audit kérés elküldve!",
+        successMessage:
+            "Csapatunk részletes manuális auditot végez, és az eredményeket 2 munkanapon belül e-mailben küldjük el.",
+        error: "Hiba történt. Kérjük, próbálja újra.",
         privacyPath: "/hu/privacy",
         privacy: "adatkezelési tájékoztatóban",
         consent: "Hozzájárulok a személyes adataim kezeléséhez az",
@@ -89,17 +87,16 @@ const content = {
         title: "Solicită Auditul SEO Gratuit",
         subtitle:
             "Primești o analiză detaliată a performanței site-ului tău în căutări și pași clari pentru îmbunătățire.",
-        name: "Numele Afacerii",
-        person: "Nume",
-        email: "Email",
-        phone: "Telefon (Opțional)",
         website: "URL Website",
-        message: "Doriți să ne uităm la ceva anume?",
+        email: "Adresă de Email",
+        next: "Pasul Următor",
+        back: "Pasul Anterior",
         send: "Solicită Audit Gratuit",
-        sending: "Se trimite...",
-        success:
-            "Vă mulțumim! Am primit solicitarea dvs. și vă vom contacta curând cu auditul.",
-        error: "Trimiterea solicitării a eșuat. Vă rugăm să încercați din nou.",
+        sending: "Se procesează...",
+        successTitle: "Solicitare Trimisă cu Succes!",
+        successMessage:
+            "Echipa noastră va efectua un audit manual detaliat și vă va trimite rezultatele prin e-mail în termen de 2 zile lucrătoare.",
+        error: "A apărut o eroare. Vă rugăm să încercați din nou.",
         privacyPath: "/ro/privacy",
         privacy: "politica de confidențialitate",
         consent: "Sunt de acord cu prelucrarea datelor mele personale conform",
@@ -143,114 +140,112 @@ const t = content[lang as keyof typeof content] || content.en;
         <div class="grid lg:grid-cols-5 gap-12 items-start">
             <!-- SEO Audit Form -->
             <div class="lg:col-span-3">
-                <form
-                    class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100"
+                <div
+                    class="bg-white p-8 rounded-2xl shadow-sm border border-gray-100 min-h-[400px] flex flex-col justify-center"
                 >
-                    <div class="grid md:grid-cols-2 gap-6 mb-6">
-                        <div>
-                            <label
-                                class="block text-sm font-medium text-gray-700 mb-2"
-                                >{t.person}</label
+                    <form id="audit-wizard-form" class="space-y-6">
+                        <!-- Step 1: Website -->
+                        <div id="step-1" class="wizard-step">
+                            <div class="mb-8">
+                                <label
+                                    class="block text-sm font-medium text-gray-700 mb-2"
+                                    >{t.website}</label
+                                >
+                                <input
+                                    type="text"
+                                    name="website"
+                                    id="wizard-website"
+                                    placeholder="your-website.com"
+                                    class="w-full px-4 py-4 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-shadow text-lg"
+                                    required
+                                />
+                            </div>
+                            <button
+                                type="button"
+                                id="next-to-step-2"
+                                class="w-full bg-primary text-white py-4 rounded-xl hover:bg-primary-hover cursor-pointer font-semibold shadow-lg shadow-primary/20 transition-all hover:-translate-y-1 active:scale-95"
                             >
-                            <input
-                                type="text"
-                                name="name"
-                                class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-shadow"
-                                required
-                            />
+                                {t.next}
+                            </button>
                         </div>
-                        <div>
-                            <label
-                                class="block text-sm font-medium text-gray-700 mb-2"
-                                >{t.name}</label
-                            >
-                            <input
-                                type="text"
-                                name="businessName"
-                                class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-shadow"
-                                required
-                            />
-                        </div>
-                        <div class="md:col-span-2">
-                            <label
-                                class="block text-sm font-medium text-gray-700 mb-2"
-                                >{t.website}</label
-                            >
-                            <input
-                                type="url"
-                                name="website"
-                                placeholder="https://example.com"
-                                class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-shadow"
-                                required
-                            />
-                        </div>
-                        <div>
-                            <label
-                                class="block text-sm font-medium text-gray-700 mb-2"
-                                >{t.email}</label
-                            >
-                            <input
-                                type="email"
-                                id="audit-email"
-                                name="email"
-                                class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-shadow"
-                                required
-                            />
-                        </div>
-                        <div>
-                            <label
-                                class="block text-sm font-medium text-gray-700 mb-2"
-                                >{t.phone}</label
-                            >
-                            <input
-                                type="tel"
-                                id="audit-phone"
-                                name="phone"
-                                class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-shadow"
-                            />
-                        </div>
-                    </div>
-                    <div class="mb-6">
-                        <label
-                            class="block text-sm font-medium text-gray-700 mb-2"
-                            >{t.message}</label
-                        >
-                        <textarea
-                            name="message"
-                            class="w-full px-4 py-2 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-shadow"
-                            rows="4"></textarea>
-                    </div>
 
-                    <div class="mb-8 flex items-start gap-3">
-                        <input
-                            type="checkbox"
-                            id="gdpr-consent-audit"
-                            name="consent"
-                            value="true"
-                            required
-                            class="mt-1 w-4 h-4 text-primary border-gray-300 rounded focus:ring-primary cursor-pointer"
-                        />
-                        <label
-                            for="gdpr-consent-audit"
-                            class="text-sm text-gray-600 leading-tight"
-                        >
-                            {t.consent}
-                            <a
-                                href={t.privacyPath}
-                                class="text-primary hover:underline font-medium"
-                                >{t.privacy}</a
-                            >.
-                        </label>
-                    </div>
+                        <!-- Step 2: Email & Consent -->
+                        <div id="step-2" class="wizard-step hidden">
+                            <div class="mb-6">
+                                <label
+                                    class="block text-sm font-medium text-gray-700 mb-2"
+                                    >{t.email}</label
+                                >
+                                <input
+                                    type="email"
+                                    name="email"
+                                    id="wizard-email"
+                                    placeholder="your@email.com"
+                                    class="w-full px-4 py-4 border border-gray-200 rounded-lg focus:ring-2 focus:ring-primary focus:border-primary outline-none transition-shadow text-lg"
+                                    required
+                                />
+                            </div>
 
-                    <button
-                        type="submit"
-                        id="submit-btn-audit"
-                        class="w-full bg-primary text-white py-4 rounded-xl hover:bg-primary-hover cursor-pointer font-semibold shadow-lg shadow-primary/20 transition-all hover:-translate-y-1 active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
-                    >
-                        <span id="submit-text-audit">{t.send}</span>
-                    </button>
-                </form>
+                            <div class="mb-8 flex items-start gap-3">
+                                <input
+                                    type="checkbox"
+                                    id="gdpr-consent-wizard"
+                                    name="consent"
+                                    value="true"
+                                    required
+                                    class="mt-1 w-4 h-4 text-primary border-gray-300 rounded focus:ring-primary cursor-pointer"
+                                />
+                                <label
+                                    for="gdpr-consent-wizard"
+                                    class="text-sm text-gray-600 leading-tight"
+                                >
+                                    {t.consent}
+                                    <a
+                                        href={t.privacyPath}
+                                        class="text-primary hover:underline font-medium"
+                                        >{t.privacy}</a
+                                    >.
+                                </label>
+                            </div>
+
+                            <div class="flex gap-4">
+                                <button
+                                    type="button"
+                                    id="back-to-step-1"
+                                    class="flex-1 bg-gray-50 text-gray-600 py-4 rounded-xl hover:bg-gray-100 cursor-pointer font-semibold transition-all"
+                                >
+                                    {t.back}
+                                </button>
+                                <button
+                                    type="submit"
+                                    id="submit-wizard"
+                                    class="flex-[2] bg-primary text-white py-4 rounded-xl hover:bg-primary-hover cursor-pointer font-semibold shadow-lg shadow-primary/20 transition-all hover:-translate-y-1 active:scale-95 disabled:opacity-50"
+                                >
+                                    <span id="submit-wizard-text">{t.send}</span
+                                    >
+                                </button>
+                            </div>
+                        </div>
+
+                        <!-- Success Step -->
+                        <div
+                            id="step-success"
+                            class="wizard-step hidden text-center py-8"
+                        >
+                            <div
+                                class="w-20 h-20 bg-green-100 text-green-600 rounded-full flex items-center justify-center mx-auto mb-6 text-4xl"
+                            >
+                                <i class="ri-checkbox-circle-line"></i>
+                            </div>
+                            <h3 class="text-2xl font-bold text-gray-900 mb-4">
+                                {t.successTitle}
+                            </h3>
+                            <p class="text-gray-600 text-lg leading-relaxed">
+                                {t.successMessage}
+                            </p>
+                        </div>
+                    </form>
+                </div>
             </div>
 
             <!-- Sidebar Benefits -->
@@ -278,25 +273,67 @@ const t = content[lang as keyof typeof content] || content.en;
 </section>
 
 <script>
-    const form = document.querySelector("#seo-audit form") as HTMLFormElement;
-    const submitBtn = document.getElementById(
-        "submit-btn-audit",
-    ) as HTMLButtonElement;
-    const submitText = document.getElementById("submit-text-audit");
+    const form = document.getElementById(
+        "audit-wizard-form",
+    ) as HTMLFormElement;
+    const step1 = document.getElementById("step-1");
+    const step2 = document.getElementById("step-2");
+    const stepSuccess = document.getElementById("step-success");
 
-    if (form && submitBtn && submitText) {
+    const nextBtn = document.getElementById("next-to-step-2");
+    const backBtn = document.getElementById("back-to-step-1");
+    const submitBtn = document.getElementById(
+        "submit-wizard",
+    ) as HTMLButtonElement;
+    const submitText = document.getElementById("submit-wizard-text");
+
+    const websiteInput = document.getElementById(
+        "wizard-website",
+    ) as HTMLInputElement;
+    const emailInput = document.getElementById(
+        "wizard-email",
+    ) as HTMLInputElement;
+
+    if (nextBtn && step1 && step2) {
+        nextBtn.addEventListener("click", () => {
+            const urlValue = websiteInput.value.trim();
+            // Permissive check: must have at least one dot
+            if (urlValue && urlValue.includes(".")) {
+                step1.classList.add("hidden");
+                step2.classList.remove("hidden");
+            } else {
+                websiteInput.setCustomValidity(
+                    document.documentElement.lang === "hu"
+                        ? "Kérjük, adjon meg egy érvényes weboldal címet!"
+                        : document.documentElement.lang === "ro"
+                          ? "Vă rugăm să introduceți o adresă de website validă!"
+                          : "Please enter a valid website address!",
+                );
+                websiteInput.reportValidity();
+                websiteInput.setCustomValidity(""); // Clear for future checks
+            }
+        });
+    }
+
+    if (backBtn && step1 && step2) {
+        backBtn.addEventListener("click", () => {
+            step2.classList.add("hidden");
+            step1.classList.remove("hidden");
+        });
+    }
+
+    if (form && submitBtn && submitText && step2 && stepSuccess) {
         form.addEventListener("submit", async function (e) {
             e.preventDefault();
 
-            // Disable submit button and show loading state
             submitBtn.disabled = true;
             const originalText = submitText.textContent;
             submitText.textContent =
                 document.documentElement.lang === "hu"
-                    ? "Küldés..."
+                    ? "Folyamatban..."
                     : document.documentElement.lang === "ro"
-                      ? "Se trimite..."
-                      : "Sending...";
+                      ? "Se procesează..."
+                      : "Processing...";
 
             try {
                 const formData = new FormData(form);
@@ -311,53 +348,28 @@ const t = content[lang as keyof typeof content] || content.en;
                         },
                         body: JSON.stringify({
                             ...data,
-                            _subject: `New SEO Audit Request - ${data.businessName}`,
-                            source: "SEO Audit Landing Page",
+                            _subject: `WIZARD: New SEO Audit Request - ${data.website}`,
+                            source: "SEO Audit Wizard",
                         }),
                     },
                 );
 
                 if (response.ok) {
-                    // Show success message
-                    const successMessage = document.createElement("div");
-                    successMessage.className =
-                        "fixed top-4 right-4 bg-green-500 text-white px-6 py-3 rounded shadow-lg z-50";
-                    successMessage.textContent =
-                        document.documentElement.lang === "hu"
-                            ? "Köszönjük! Megkaptuk kérését, és hamarosan jelentkezünk az audittal."
-                            : document.documentElement.lang === "ro"
-                              ? "Vă mulțumim! Am primit solicitarea dvs. și vă vom contacta curând cu auditul."
-                              : "Thank you! We've received your request and will get back to you with your audit soon.";
-                    document.body.appendChild(successMessage);
-
-                    setTimeout(() => {
-                        successMessage.remove();
-                    }, 5000);
-
-                    form.reset();
+                    step2.classList.add("hidden");
+                    stepSuccess.classList.remove("hidden");
                 } else {
-                    throw new Error("Failed to send request");
+                    throw new Error("Submission failed");
                 }
             } catch (error) {
-                // Show error message
-                const errorMessage = document.createElement("div");
-                errorMessage.className =
-                    "fixed top-4 right-4 bg-red-500 text-white px-6 py-3 rounded shadow-lg z-50";
-                errorMessage.textContent =
+                alert(
                     document.documentElement.lang === "hu"
-                        ? "Sikertelen küldés. Kérjük, próbálja újra."
+                        ? "Hiba történt. Kérjük, próbálja újra."
                         : document.documentElement.lang === "ro"
-                          ? "Trimiterea solicitării a eșuat. Vă rugăm să încercați din nou."
-                          : "Failed to send request. Please try again.";
-                document.body.appendChild(errorMessage);
-
-                setTimeout(() => {
-                    errorMessage.remove();
-                }, 5000);
-
+                          ? "A apărut o eroare. Vă rugăm să încercați din nou."
+                          : "Something went wrong. Please try again.",
+                );
                 console.error("Form submission error:", error);
             } finally {
-                // Re-enable submit button
                 submitBtn.disabled = false;
                 submitText.textContent = originalText;
             }
