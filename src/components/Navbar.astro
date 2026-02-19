@@ -129,7 +129,13 @@ const langLabel = lang.toUpperCase();
           href={lang === "en" ? "/contact" : `/${lang}/contact`}
           class="bg-primary text-white px-6 py-2 rounded-lg hover:bg-primary-hover cursor-pointer whitespace-nowrap transition-colors font-semibold"
         >
-          {lang === "en" ? "Get Started" : lang === "hu" ? "Kezdés" : "Începe"}
+          {
+            lang === "en"
+              ? "Consult an Expert"
+              : lang === "hu"
+                ? "Szakértői konzultáció"
+                : "Consultă un Expert"
+          }
         </a>
       </div>
     </div>

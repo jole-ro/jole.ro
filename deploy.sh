@@ -48,4 +48,4 @@ bye;
 "
 
 echo "✅ Deployment complete!"
-echo "🌐 Your site is now live at https://jole.ro"
+echo "🌐 Your site is now live at https://jolero.eu"

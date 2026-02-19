@@ -5,80 +5,99 @@ const content = {
     en: {
         title: "Our Services",
         subtitle:
-            "Comprehensive solutions to boost your local business presence",
+            "Positioning your brand for the European market with local expertise",
     },
     hu: {
         title: "Szolgáltatásaink",
-        subtitle: "Átfogó megoldások a helyi üzleti jelenlét növelésére",
+        subtitle:
+            "Márkája pozícionálása az európai piacra, helyi szakértelemmel",
     },
     ro: {
         title: "Serviciile Noastre",
         subtitle:
-            "Soluții complete pentru a crește prezența afacerii tale locale",
+            "Poziționarea brandului tău pentru piața europeană cu expertiză locală",
     },
 };
 
 const services = {
     en: [
         {
-            title: "Google Business Profile Optimization",
-            desc: "We’ll help you claim and optimize your Google Business Profile, ensuring your business details are consistent and easy to find.",
-            icon: "ri-map-pin-user-line",
+            title: "European Multilanguage SEO",
+            desc: "Expert SEO strategies tailored for multiple European markets, ensuring your content resonates across borders and languages.",
+            icon: "ri-global-line",
             img: "/images/business_listing_management.png",
         },
         {
-            title: "Review Automation for Small Business",
-            desc: "Start building real trust with your customers through automated reviews that boost your local reputation and search rankings.",
+            title: "Local Trust Signals & Reputation",
+            desc: "Build authority and trust with European consumers through localized social proof and automated review management.",
             icon: "ri-chat-check-line",
             img: "/images/social_media_optimization.png",
         },
         {
-            title: "GEO & SGE Visibility Enhancement",
-            desc: "Stay ahead of the curve with GEO and SGE strategies designed specifically to help local businesses grow.",
+            title: "GEO & SGE Future-Proofing",
+            desc: "Advanced AI search strategies (GEO/SGE) designed to keep your European business visible in the age of AI. ",
             icon: "ri-ai-generate",
             img: "/images/local_seo_enhancement.png",
+        },
+        {
+            title: "Business Presentation Website",
+            desc: "We create elite digital platforms that reflect your brand's prestige and convert visitors into long-term partners.",
+            icon: "ri-window-line",
+            img: "/images/ai_visibility_blog.png",
         },
     ],
     // For now using English content for other languages as placeholder, user can update later or I can translate if needed.
     // The prompt said "3 languages", I should probably translate these titles at least.
     hu: [
         {
-            title: "Google Cégem Optimalizálás",
-            desc: "Segítünk Google Cégem profilja beállításában és optimalizálásában, hogy vállalkozása adatai mindig pontosak és könnyen megtalálhatóak legyenek.",
-            icon: "ri-map-pin-user-line",
+            title: "Európai Többnyelvű SEO",
+            desc: "Több európai piacra szabott szakértő SEO stratégiák, amelyek biztosítják, hogy tartalmai országhatárokon és nyelveken átívelően érvényesüljenek.",
+            icon: "ri-global-line",
             img: "/images/business_listing_management.png",
         },
         {
-            title: "Vélemény Automatizálás",
-            desc: "Építsen valódi bizalmat ügyfeleivel az automatizált véleménygyűjtés segítségével, amely javítja hírnevét és keresési helyezéseit.",
+            title: "Helyi Bizalmi Jelek",
+            desc: "Építsen tekintélyt és bizalmat az európai fogyasztók körében lokalizált közösségi bizonyítékokkal és automatizált véleménykezeléssel.",
             icon: "ri-chat-check-line",
             img: "/images/social_media_optimization.png",
         },
         {
-            title: "GEO & SGE Láthatóság",
-            desc: "Maradjon lépéselőnyben a kifejezetten helyi vállalkozások növekedésére szabott GEO és SGE stratégiáinkkal.",
+            title: "GEO & SGE Jövőállóság",
+            desc: "Fejlett AI keresési stratégiák (GEO/SGE), amelyeket úgy terveztünk, hogy európai vállalkozása látható maradjon az AI korában is.",
             icon: "ri-ai-generate",
             img: "/images/local_seo_enhancement.png",
+        },
+        {
+            title: "Üzleti Bemutatkozó Weboldal",
+            desc: "Elit digitális platformokat hozunk létre, amelyek tükrözik márkája tekintélyét, és a látogatókat hosszú távú partnerekké alakítják.",
+            icon: "ri-window-line",
+            img: "/images/ai_visibility_blog.png",
         },
     ],
     ro: [
         {
-            title: "Digitalizare IMM & Google Business Profile",
-            desc: "Te ajutăm să revendici și să optimizezi profilul Google, asigurându-ne că datele afacerii tale sunt corecte și ușor de găsit.",
-            icon: "ri-map-pin-user-line",
+            title: "SEO Multilingv European",
+            desc: "Strategii SEO experte adaptate pentru multiple piețe europene, asigurându-ne că mesajul tău rezonează peste granițe și limbi.",
+            icon: "ri-global-line",
             img: "/images/business_listing_management.png",
         },
         {
-            title: "Automatizarea Recenziilor",
-            desc: "Construiește o relație de încredere cu clienții tăi prin recenzii automatizate care îți îmbunătățesc reputația și poziția în căutări.",
+            title: "Semnale de Încredere Locale",
+            desc: "Construiește autoritate și încredere în rândul consumatorilor europeni prin dovezi sociale localizate și management automatizat.",
             icon: "ri-chat-check-line",
             img: "/images/social_media_optimization.png",
         },
         {
-            title: "Vizibilitate GEO & SGE",
-            desc: "Fii cu un pas înainte folosind strategii GEO și SGE create special pentru a susține creșterea afacerilor locale.",
+            title: "GEO & SGE Future-Proofing",
+            desc: "Strategii avansate de căutare AI (GEO/SGE) create pentru a menține afacerea ta europeană vizibilă în era inteligenței artificiale.",
             icon: "ri-ai-generate",
             img: "/images/local_seo_enhancement.png",
+        },
+        {
+            title: "Website de Prezentare Business",
+            desc: "Creăm platforme digitale de elită care reflectă prestigiul brandului tău și convertesc vizitatorii în parteneri pe termen lung.",
+            icon: "ri-window-line",
+            img: "/images/ai_visibility_blog.png",
         },
     ],
 };
@@ -93,7 +112,7 @@ const list = services[lang as keyof typeof services] || services.en;
             <h2 class="text-3xl font-bold text-gray-900 mb-4">{t.title}</h2>
             <p class="text-lg text-gray-600">{t.subtitle}</p>
         </div>
-        <div class="grid md:grid-cols-3 gap-8">
+        <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
             {
                 list.map((service) => (
                     <div class="bg-white p-8 rounded-lg shadow-sm hover:shadow-xl transition-shadow duration-300 border border-gray-100">
