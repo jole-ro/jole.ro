@@ -1,0 +1,10 @@
+RewriteEngine On
+
+# Ensure we capture both jole.ro and www.jole.ro
+RewriteCond %{HTTP_HOST} ^(www\.)?jole\.ro$ [NC]
+
+# Redirect all traffic to index.php which handles both short links and general redirects
+# This replaces the simplistic homepage-only redirect currently on your server.
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteRule ^(.*)$ index.php [L,QSA]

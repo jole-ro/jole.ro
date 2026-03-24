@@ -69,10 +69,10 @@ const t = content[lang as keyof typeof content] || content.en;
   class="relative min-h-[80vh] flex items-center overflow-hidden"
   id="hero-section"
 >
-  <ParticlesBackground quantity={100} />
+  <ParticlesBackground />
   <div class="absolute inset-0 pointer-events-none"></div>
   <div
-    class="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-24 bg-[#fefffe]/90 backdrop-blur-sm border border-gray-200 rounded-3xl shadow-xl pointer-events-none"
+    class="relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 my-24 bg-white backdrop-blur-sm border border-gray-200 rounded-3xl shadow-xl"
   >
     <div class="max-w-2xl mt-8 mb-8 pointer-events-auto">
       <h1
